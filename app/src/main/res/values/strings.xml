@@ -8,8 +8,12 @@
     <string name="login_text">У вас ещё нет аккаунта?</string>
     <string name="Register">РЕГИСТРАЦИЯ</string>
     <string name="logo">Logo</string>
-    <string name="username">USERNAME</string>
-    <string name="password">PASSWORD</string>
     <string name="RegisterInfo">ИЛИ ЗАРЕГИСТРИРУЙТЕСЬ ЧЕРЕЗ</string>
     <string name="RegisterText">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="add">Add</string>
+    <string name="analitic">Analitic</string>
+    <string name="home">Home</string>
+    <string name="content_plan">Content Plan</string>
+    <string name="training">Training</string>
+    <string name="profile">Profile</string>
 </resources>
