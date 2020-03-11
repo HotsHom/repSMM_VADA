@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment"
+    android:background="#20262b">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/up_prodile_block"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:paddingBottom="15dp"
+                    android:id="@+id/linked"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/link_count_profile"
+                    android:gravity="center"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@drawable/up_prodile_block_white"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="@string/profile_Title"
+                    android:textColor="#1B1B1B"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Носов"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:id="@+id/first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Данила"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/username_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hotshomwork@gmail.com"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="#B4B4B4"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="220dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Подклёченные социальные сети"
+                    android:textColor="#fff"
+                    android:textAllCaps="true"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="3dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ВКонтакте"
+                        android:textColor="#fff"
+                        android:textSize="15sp"/>
+
+                    <Button
+                        android:id="@+id/vk_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@drawable/edit_style_white"
+                        android:text="ПОДКЛЮЧИТЬ"
+                        android:textSize="10sp"
+                        android:textColor="#fff"
+                        android:layout_marginLeft="210dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/line_vertical"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="3dp"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Введите ID вашего паблика"
+                        android:textColor="#fff"
+                        android:textSize="12sp"
+                        android:layout_gravity="center"/>
+                    <EditText
+                        android:id="@+id/editcn"
+                        android:layout_width="120dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/edit_style_2_white"
+                        android:textSize="10sp"
+                        android:textColor="#FFF"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        tools:ignore="LabelFor">
+                    </EditText>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@drawable/edit_style_white"
+                        android:textColor="#FFF"
+                        android:textSize="10sp"
+                        android:text="Добавить"
+                        android:layout_marginLeft="3dp"
+                        android:layout_gravity="center">
+
+                    </Button>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Твиттер"
+                        android:textColor="#fff"
+                        android:textSize="15sp"
+                        android:layout_gravity="center"/>
+
+                    <Button
+                        android:id="@+id/twitter_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@drawable/edit_style_white"
+                        android:text="ПОДКЛЮЧИТЬ"
+                        android:textSize="10sp"
+                        android:textColor="#fff"
+                        android:layout_marginLeft="230dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:layout_marginTop="400dp"
+                android:background="#fff"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Аккаунт"
+                    android:textColor="#1B1B1B"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="20dp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/line_black"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Изменить пароль"
+                    android:textColor="#979696"
+                    android:layout_marginLeft="20dp"/>
+                <TextView
+                    android:textColor="#979696"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Изменить email"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:textColor="#979696"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Удалить аккаунт"
+                    android:layout_marginLeft="20dp" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ВЫЙТИ"
+                android:background="@drawable/butt_style_color"
+                android:gravity="center"
+                android:layout_marginTop="600dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:paddingBottom="50dp"
+                android:layout_marginTop="650dp">
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

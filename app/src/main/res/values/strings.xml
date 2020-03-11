@@ -16,4 +16,9 @@
     <string name="content_plan">Content Plan</string>
     <string name="training">Training</string>
     <string name="profile">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_Title">ВАШ ПРОФИЛЬ</string>
+    <string name="link_count_profile">0 соц. сети подключено</string>
 </resources>
