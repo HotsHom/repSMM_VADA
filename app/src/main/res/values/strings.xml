@@ -6,4 +6,10 @@
     <string name="login">Login</string>
     <string name="vk_auth">VK AUTH</string>
     <string name="login_text">У вас ещё нет аккаунта?</string>
+    <string name="Register">РЕГИСТРАЦИЯ</string>
+    <string name="logo">Logo</string>
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="RegisterInfo">ИЛИ ЗАРЕГИСТРИРУЙТЕСЬ ЧЕРЕЗ</string>
+    <string name="RegisterText">ЗАРЕГИСТРИРОВАТЬСЯ</string>
 </resources>
