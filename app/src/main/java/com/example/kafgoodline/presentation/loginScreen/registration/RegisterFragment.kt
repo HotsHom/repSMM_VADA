@@ -1,4 +1,4 @@
-package com.example.kafgoodline.presentation.loginScreen
+package com.example.kafgoodline.presentation.loginScreen.registration
 
 
 import android.os.Bundle

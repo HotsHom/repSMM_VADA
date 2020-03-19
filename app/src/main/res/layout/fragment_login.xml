@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.loginScreen.LoginFragment">
+    tools:context=".presentation.loginScreen.login.LoginFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/tvemail"
+                android:id="@+id/etLogin"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -41,7 +41,7 @@
                 android:importantForAutofill="no" />
 
             <EditText
-                android:id="@+id/tvepass"
+                android:id="@+id/etPass"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -61,11 +61,10 @@
                 android:importantForAutofill="no" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/tv_error"
+                android:layout_marginHorizontal="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
-                android:paddingLeft="20dp"
                 android:textColor="#fff"
                 android:gravity="center"
                 android:layout_marginTop="10dp" />
