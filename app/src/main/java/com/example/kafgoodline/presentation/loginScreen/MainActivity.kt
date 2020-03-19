@@ -3,13 +3,15 @@ package com.example.kafgoodline.presentation.loginScreen
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.kafgoodline.R
 import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.login.LoginPresenter
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
 
-class MainActivity : AppCompatActivity(), IMainActivity {
+class MainActivity : MvpAppCompatActivity(), IMainActivity {
+
     @InjectPresenter
     lateinit var presenter: MainActivityPresenter
 
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity(), IMainActivity {
     override fun showRegisterScreen() {
         supportFragmentManager.beginTransaction()
             .add(R.id.container, RegisterFragment())
+            .addToBackStack(null)
             .commit()
     }
 
