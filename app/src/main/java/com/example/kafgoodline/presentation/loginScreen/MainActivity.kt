@@ -1,7 +1,8 @@
-package com.example.kafgoodline
+package com.example.kafgoodline.presentation.loginScreen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.kafgoodline.R
 
 class MainActivity : AppCompatActivity() {
 
