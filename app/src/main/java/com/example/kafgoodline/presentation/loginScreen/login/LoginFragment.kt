@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.kafgoodline.R
+import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment :  MvpAppCompatFragment(), ILoginView {
@@ -37,16 +38,5 @@ class LoginFragment :  MvpAppCompatFragment(), ILoginView {
     override fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
-
-    override fun showRegisterScreen() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun goToWorkActivity() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-
-
 
 }
