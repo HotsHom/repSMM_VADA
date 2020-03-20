@@ -9,18 +9,29 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.kafgoodline.R
+import com.example.kafgoodline.domain.di.DaggerAppComponent
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import com.example.kafgoodline.presentation.loginScreen.login.LoginPresenter
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.btnRegister
 import kotlinx.android.synthetic.main.fragment_register.*
+import javax.inject.Inject
 
 
-class RegisterFragment : MvpAppCompatFragment(), IRegistrationView {
+class RegisterFragment : MvpAppCompatFragment, IRegistrationView {
 
+    @Inject
     @InjectPresenter
     lateinit var presenter: RegistratonPresenter
+
+    @ProvidePresenter
+    fun providePresenter() = presenter
+
+    constructor(){
+        DaggerAppComponent.create().inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

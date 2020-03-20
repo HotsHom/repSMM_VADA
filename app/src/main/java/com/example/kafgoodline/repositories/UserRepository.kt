@@ -1,6 +1,12 @@
 package com.example.kafgoodline.repositories
 
+import javax.inject.Inject
+
 class UserRepository {
+
+    @Inject
+    constructor()
+
     fun login(subscriber: (String) -> Unit, login: String, pass: String) {
         subscriber.invoke("$login : $pass")
     }

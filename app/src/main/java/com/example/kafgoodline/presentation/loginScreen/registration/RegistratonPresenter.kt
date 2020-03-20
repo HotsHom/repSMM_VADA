@@ -3,10 +3,16 @@ package com.example.kafgoodline.presentation.loginScreen.registration
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.example.kafgoodline.repositories.UserRepository
+import javax.inject.Inject
 
 @InjectViewState
-class RegistratonPresenter : MvpPresenter<IRegistrationView>() {
+class RegistratonPresenter : MvpPresenter<IRegistrationView> {
+
+
     var userRepository: UserRepository = UserRepository()
+
+    @Inject
+    constructor()
 
     fun registration(login: String, pass1: String, pass2 : String) {
 
