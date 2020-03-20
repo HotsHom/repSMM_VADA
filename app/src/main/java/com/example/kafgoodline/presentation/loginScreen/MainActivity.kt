@@ -1,14 +1,23 @@
 package com.example.kafgoodline.presentation.loginScreen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.kafgoodline.R
+import com.example.kafgoodline.WorkActivity
 import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.login.LoginPresenter
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+
 
 class MainActivity : MvpAppCompatActivity(), IMainActivity {
 
@@ -35,10 +44,26 @@ class MainActivity : MvpAppCompatActivity(), IMainActivity {
     }
 
     override fun showLoginScreen() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container, LoginFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun goToMainWorkScreen() {
+        val intent = Intent(this, WorkActivity::class.java)
+        startActivity(intent)
     }
 
     fun registerAction(view: View) {
         presenter.showRegister()
+    }
+
+    fun doRegistration() {
+        presenter.showLogin()
+    }
+
+    fun doWork(){
+        presenter.goToWork()
     }
 }

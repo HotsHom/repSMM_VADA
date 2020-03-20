@@ -113,6 +113,8 @@
 
 
             <Button
+                android:id="@+id/btnRegister"
+                android:onClick="doRegistration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
@@ -120,7 +122,7 @@
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/butt_style_color"
                 android:text="@string/RegisterText"
-                android:layout_marginTop="50dp"/>
+                android:layout_marginTop="40dp"/>
 
         </LinearLayout>
 

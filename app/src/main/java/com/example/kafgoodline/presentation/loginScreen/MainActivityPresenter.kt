@@ -14,4 +14,11 @@ class MainActivityPresenter : MvpPresenter<IMainActivity>() {
         viewState.showRegisterScreen()
     }
 
+    fun showLogin(){
+        viewState.showLoginScreen()
+    }
+
+    fun goToWork(){
+        viewState.goToMainWorkScreen()
+    }
 }

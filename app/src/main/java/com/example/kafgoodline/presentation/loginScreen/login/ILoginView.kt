@@ -4,4 +4,5 @@ import com.arellomobile.mvp.MvpView
 
 interface ILoginView : MvpView {
         fun showError(message: String)
+        fun showWork()
 }
