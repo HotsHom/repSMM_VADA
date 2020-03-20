@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WorkActivity"></activity>
+        <activity android:name=".presentation.mainScreen.WorkActivity"></activity>
         <activity android:name=".presentation.loginScreen.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

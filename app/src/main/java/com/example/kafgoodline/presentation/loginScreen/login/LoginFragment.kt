@@ -9,9 +9,7 @@ import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.example.kafgoodline.R
-import com.example.kafgoodline.WorkActivity
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
-import com.example.kafgoodline.presentation.loginScreen.MainActivityPresenter
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment :  MvpAppCompatFragment(), ILoginView{

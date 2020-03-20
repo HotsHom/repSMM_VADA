@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#20262b"
-    tools:context=".WorkActivity"
+    tools:context=".presentation.mainScreen.WorkActivity"
     android:screenOrientation="portrait"
     >
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/frame_layout"/>
+        android:id="@+id/container"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bar"
         android:layout_width="match_parent"
