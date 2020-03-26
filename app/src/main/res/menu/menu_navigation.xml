@@ -3,22 +3,22 @@
     <item
         android:id="@+id/confirm_button"
         android:title="@string/analitic"
-        android:icon="@drawable/ic_broken_image_black_24dp"/>
+        android:icon="@drawable/ic_broken_image_black_24dp" />
     <item
         android:id="@+id/confirm_button1"
         android:title="@string/content_plan"
-        android:icon="@drawable/ic_blur_on_black_24dp"/>
+        android:icon="@drawable/ic_blur_on_black_24dp" />
     <item
         android:id="@+id/Home"
         android:title="@string/home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:checked="true"/>
+        android:checked="true" />
     <item
         android:id="@+id/training"
         android:title="@string/training"
-        android:icon="@drawable/ic_style_black_24dp"/>
+        android:icon="@drawable/ic_style_black_24dp" />
     <item
         android:id="@+id/confirm_button2"
         android:title="@string/profile"
-        android:icon="@drawable/ic_account_box_black_24dp"/>
+        android:icon="@drawable/ic_account_box_black_24dp" />
 </menu>

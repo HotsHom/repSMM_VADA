@@ -1,7 +1,7 @@
 package com.example.kafgoodline.presentation.mainScreen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kafgoodline.R
 import com.example.kafgoodline.presentation.mainScreen.Profile.ProfileFragment
 

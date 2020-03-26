@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.example.kafgoodline.base.ABaseFragment
 import com.example.kafgoodline.R
+import com.example.kafgoodline.base.ABaseFragment
 import com.example.kafgoodline.domain.di.DaggerAppComponent
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -31,7 +31,7 @@ class RegisterFragment : ABaseFragment(), IRegistrationView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnRegister.setOnClickListener {
+        btnDoRegister.setOnClickListener {
             presenter.registration("${nickname.text}", "${pass1.text}", "${pass2.text}")
         }
     }
@@ -41,7 +41,7 @@ class RegisterFragment : ABaseFragment(), IRegistrationView {
     }
 
     override fun showLoginSc() {
-        val r : MainActivity = getActivity() as MainActivity
+        val r: MainActivity = getActivity() as MainActivity
         r.showLoginScreen()
     }
 }

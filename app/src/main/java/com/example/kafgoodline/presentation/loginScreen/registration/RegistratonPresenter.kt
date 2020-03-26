@@ -14,15 +14,17 @@ class RegistratonPresenter : MvpPresenter<IRegistrationView> {
     @Inject
     constructor()
 
-    fun registration(login: String, pass1: String, pass2 : String) {
+    fun registration(login: String, pass1: String, pass2: String) {
 
         //TODO Инициализация окна блокировки
 
         userRepository.registration({
             //TODO Скрытие окна блокировки
-            if (it == "1 : 1 : 1"){
+            if (it == "1 : 1 : 1") {
                 viewState.showLoginSc()
-            }else{
-            viewState.showError(it)}}, login, pass1, pass2)
+            } else {
+                viewState.showError(it)
+            }
+        }, login, pass1, pass2)
     }
 }

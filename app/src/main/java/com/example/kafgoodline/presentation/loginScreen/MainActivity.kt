@@ -5,21 +5,17 @@ import android.os.Bundle
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.example.kafgoodline.base.ABaseActivity
 import com.example.kafgoodline.R
+import com.example.kafgoodline.base.ABaseActivity
 import com.example.kafgoodline.domain.di.DaggerAppComponent
 import com.example.kafgoodline.presentation.loginScreen.loading.LoadFragment
-import com.example.kafgoodline.presentation.mainScreen.WorkActivity
 import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
+import com.example.kafgoodline.presentation.mainScreen.WorkActivity
 import javax.inject.Inject
 
 
 class MainActivity : IMainActivity, ICredentionalsRouter, ABaseActivity() {
-
-    override fun inject() {
-        DaggerAppComponent.create().inject(this)
-    }
 
     @Inject
     @InjectPresenter
@@ -28,16 +24,21 @@ class MainActivity : IMainActivity, ICredentionalsRouter, ABaseActivity() {
     @ProvidePresenter
     fun providePresenter() = presenter
 
+    override fun inject() {
+        DaggerAppComponent.create().inject(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState != null)
             return
+
         showLoading()
     }
 
-    override fun showRegistration() {
+    override fun showRegistrationScreen() {
         replace(RegisterFragment(), "Registration")
     }
 
@@ -62,10 +63,9 @@ class MainActivity : IMainActivity, ICredentionalsRouter, ABaseActivity() {
         presenter.showLogin()
     }
 
-    fun doWork(){
+    fun doWork() {
         presenter.goToWork()
     }
-
 
 
 }

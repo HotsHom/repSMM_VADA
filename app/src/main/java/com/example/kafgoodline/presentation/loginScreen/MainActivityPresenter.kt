@@ -2,7 +2,6 @@ package com.example.kafgoodline.presentation.loginScreen
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.example.kafgoodline.presentation.loginScreen.login.ILoginView
 import com.example.kafgoodline.repositories.UserRepository
 import javax.inject.Inject
 
@@ -14,15 +13,15 @@ class MainActivityPresenter : MvpPresenter<IMainActivity> {
 
     var userRepository: UserRepository = UserRepository()
 
-    fun showRegister(){
-        viewState.showRegistration()
+    fun showRegister() {
+        viewState.showRegistrationScreen()
     }
 
-    fun showLogin(){
+    fun showLogin() {
         viewState.showLoginScreen()
     }
 
-    fun goToWork(){
+    fun goToWork() {
         viewState.goToMainWorkScreen()
     }
 }

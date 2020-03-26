@@ -4,17 +4,16 @@ package com.example.kafgoodline.presentation.loginScreen.login
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import com.example.kafgoodline.base.ABaseFragment
 import com.example.kafgoodline.R
+import com.example.kafgoodline.base.ABaseFragment
 import com.example.kafgoodline.domain.di.DaggerAppComponent
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
-class LoginFragment :  ABaseFragment(), ILoginView{
+class LoginFragment : ABaseFragment(), ILoginView {
 
     @Inject
     @InjectPresenter
@@ -42,7 +41,7 @@ class LoginFragment :  ABaseFragment(), ILoginView{
     }
 
     override fun showWork() {
-        val r : MainActivity = getActivity() as MainActivity
+        val r: MainActivity = getActivity() as MainActivity
         r.doWork()
     }
 

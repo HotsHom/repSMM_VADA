@@ -10,7 +10,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 
 abstract class ABaseFragment : MvpAppCompatFragment() {
 
-    init{
+    init {
         inject()
     }
 
@@ -25,11 +25,11 @@ abstract class ABaseFragment : MvpAppCompatFragment() {
     abstract fun inject()
     abstract fun getViewId(): Int
 
-    fun toast(message: String){
+    fun toast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
-    fun toast(@StringRes stringId: Int){
+    fun toast(@StringRes stringId: Int) {
         Toast.makeText(context, stringId, Toast.LENGTH_LONG).show()
     }
 }

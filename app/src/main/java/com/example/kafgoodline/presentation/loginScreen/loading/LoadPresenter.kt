@@ -6,7 +6,7 @@ import com.arellomobile.mvp.MvpPresenter
 import javax.inject.Inject
 
 @InjectViewState
-class LoadPresenter : MvpPresenter<ILoadView>{
+class LoadPresenter : MvpPresenter<ILoadView> {
 
     @Inject
     constructor()
@@ -17,9 +17,9 @@ class LoadPresenter : MvpPresenter<ILoadView>{
         loadStaticResources()
     }
 
-    fun loadStaticResources(){
+    fun loadStaticResources() {
         Handler().postDelayed({
             viewState.onLoadingComplete()
-        },2000)
+        }, 2000)
     }
 }

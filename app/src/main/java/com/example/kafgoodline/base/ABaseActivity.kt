@@ -12,7 +12,7 @@ abstract class ABaseActivity : AppCompatActivity() {
 
     abstract fun inject()
 
-    fun replace(fragment: Fragment, backStack: String? = null, tag: String? = null){
+    fun replace(fragment: Fragment, backStack: String? = null, tag: String? = null) {
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, tag).apply {
             backStack?.let {
                 addToBackStack(it)
