@@ -15,7 +15,6 @@ class UserStorage {
     fun save(user: User, login: String, pass: String) {
         this.user = user
         this.user!!.username = login
-        this.user!!.password = pass
     }
 
     fun save(user: User, flag: String? = null){
