@@ -8,9 +8,13 @@ import com.example.kafgoodline.presentation.loginScreen.IMainActivity
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import com.example.kafgoodline.presentation.loginScreen.MainActivityPresenter
 import com.example.kafgoodline.repositories.UserRepository
+import javax.inject.Inject
 
 @InjectViewState
-class LoginPresenter : MvpPresenter<ILoginView>() {
+class LoginPresenter : MvpPresenter<ILoginView> {
+
+    @Inject
+    constructor()
 
     var userRepository: UserRepository = UserRepository()
 
