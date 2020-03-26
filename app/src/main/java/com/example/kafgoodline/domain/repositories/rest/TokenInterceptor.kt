@@ -4,6 +4,7 @@ import android.media.session.MediaSession
 import android.support.v4.media.session.MediaSessionCompat
 import android.util.Log
 import com.example.kafgoodline.domain.di.models.Token
+import com.example.kafgoodline.domain.di.models.User
 import com.example.kafgoodline.domain.repositories.UserRepository
 import com.example.kafgoodline.exceptions.AuthException
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
@@ -37,7 +38,7 @@ class TokenInterceptor : Interceptor {
 
         val chain = inChain ?: throw IllegalArgumentException("Chain is NULL")
 
-        var token = userRepository.getUser()?.token
+        var token = userRepository.getUser()
         if (token == null) {
             WorkActivity.show()
             throw AuthException("Auth is NULL")
@@ -67,7 +68,7 @@ class TokenInterceptor : Interceptor {
                 lock.lock()
                 lock.unlock()
 
-                token = userRepository.getUser()?.token
+                token = userRepository.getUser()
                 if (token == null) {
                     MainActivity.show()
                     throw AuthException("Auth is NULL")
@@ -81,7 +82,7 @@ class TokenInterceptor : Interceptor {
     }
 
 
-    private fun addAuth(original: Request, token: Token): Request {
+    private fun addAuth(original: Request, token: User): Request {
 
         val request = original.newBuilder()
 

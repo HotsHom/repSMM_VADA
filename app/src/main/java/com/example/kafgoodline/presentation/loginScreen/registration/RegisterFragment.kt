@@ -31,12 +31,21 @@ class RegisterFragment : ABaseFragment(), IRegistrationView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnDoRegister.setOnClickListener {
-            presenter.registration("${nickname.text}", "${pass1.text}", "${pass2.text}")
-        }
-    }
+            btnDoRegister.setOnClickListener {
+                val login : String = "${nickname.text}"
+                val password : String = "${pass1.text}"
 
-    override fun showError(message: String) {
+                if (login.isEmpty() || password.isEmpty()){
+                    toast(R.string.error_login_password)
+                    return@setOnClickListener
+                }
+
+                presenter.registration(login, password)
+
+            }
+        }
+
+    override fun showError(message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 

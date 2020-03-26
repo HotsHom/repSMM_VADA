@@ -9,18 +9,20 @@ class UserStorage {
     var user: User? = null
         private set
 
-    var tokens: Token? = null
-        private set
-
     @Inject
     constructor()
 
-    fun save(user: User) {
+    fun save(user: User, login: String, pass: String) {
         this.user = user
+        this.user!!.username = login
+        this.user!!.password = pass
     }
 
-    fun save(token: Token) {
-        user?.token = token
+    fun save(user: User, flag: String? = null){
+        if (flag.isNullOrEmpty()){
+            this.user!!.access = user.access
+            this.user!!.refresh = user.refresh
+        }
     }
 
     fun dropCredentials() {

@@ -2,6 +2,7 @@ package com.example.kafgoodline.presentation.loginScreen.registration
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.example.kafgoodline.base.SubRX
 import com.example.kafgoodline.domain.repositories.UserRepository
 import javax.inject.Inject
 
@@ -14,17 +15,17 @@ class RegistratonPresenter : MvpPresenter<IRegistrationView> {
     @Inject
     constructor()
 
-    fun registration(login: String, pass1: String, pass2: String) {
+    fun registration(login: String, pass1: String) {
 
-        //TODO Инициализация окна блокировки
+        userRepository.registration(SubRX { _, e ->
 
-        userRepository.registration({
-            //TODO Скрытие окна блокировки
-            if (it == "1 : 1 : 1") {
-                viewState.showLoginSc()
-            } else {
-                viewState.showError(it)
+            if (e != null) {
+                e.printStackTrace()
+                viewState.showError(e.message)
+                return@SubRX
             }
-        }, login, pass1, pass2)
+
+            viewState.showLoginSc()
+        }, login, pass1)
     }
 }

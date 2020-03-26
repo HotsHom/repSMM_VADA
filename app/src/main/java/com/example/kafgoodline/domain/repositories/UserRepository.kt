@@ -21,18 +21,20 @@ class UserRepository {
         this.rest = rest
     }
 
-    fun login(observer: SubRX<Token>, login: String, pass: String) {
+    fun login(observer: SubRX<User>, login: String, pass: String) {
         rest.login(login, pass).doOnNext {
-            println(it)
+            storage.save(it, login, pass)
         }.doOnError {  }.standardSubscribeIO(observer)
     }
 
-    fun registration(subscriber: (String) -> Unit, login: String, pass1: String, pass2: String) {
-        subscriber.invoke("$login : $pass1 : $pass2")
+    fun registration(observer: SubRX<User>, login: String, pass: String) {
+        rest.registration(login, pass).doOnNext {
+            storage.save(it, login, pass)
+        }.doOnError {  }.standardSubscribeIO(observer)
     }
 
     fun getUser() = storage.user
-    fun refreshToken(token: Token, onRetry: (Int) -> Boolean = { it == HttpURLConnection.HTTP_UNAUTHORIZED }): Token? {
+    fun refreshToken(token: User, onRetry: (Int) -> Boolean = { it == HttpURLConnection.HTTP_UNAUTHORIZED }): User? {
 
         val response = rest.refreshToken(token.refresh).execute()
         response.body()?.let {

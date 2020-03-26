@@ -2,6 +2,7 @@ package com.example.kafgoodline.domain.repositories.rest.api
 
 import com.example.kafgoodline.base.ABaseRestApi
 import com.example.kafgoodline.base.IRestClient
+import com.example.kafgoodline.domain.di.models.Token
 import com.example.kafgoodline.domain.di.models.User
 import com.example.kafgoodline.domain.di.module.NetModule
 import com.example.kafgoodline.domain.repositories.rest.service.IUserRestApiService
@@ -23,6 +24,6 @@ class UserRestApi : ABaseRestApi<IUserRestApiService> {
             = service.login(User(username = login, password = password))
 
 
-    fun refreshToken(refreshToken: String)
+    fun refreshToken(refreshToken: String?)
             = service.refreshToken(refreshToken)
 }
