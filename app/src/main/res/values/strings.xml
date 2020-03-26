@@ -21,4 +21,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_Title">ВАШ ПРОФИЛЬ</string>
     <string name="link_count_profile">0 соц. сети подключено</string>
+    <string name="error_login_password">Неправильно введён логин или пароль</string>
 </resources>

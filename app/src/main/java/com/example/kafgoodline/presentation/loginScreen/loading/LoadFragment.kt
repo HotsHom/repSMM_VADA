@@ -4,14 +4,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseFragment
-import com.example.kafgoodline.domain.di.DaggerAppComponent
-import com.example.kafgoodline.presentation.loginScreen.IMainActivity
+import com.example.kafgoodline.domain.di.component.DaggerAppComponent
+import com.example.kafgoodline.presentation.loginScreen.ICredentionalsRouter
 import javax.inject.Inject
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 
 class LoadFragment : ABaseFragment(), ILoadView {
@@ -31,8 +26,8 @@ class LoadFragment : ABaseFragment(), ILoadView {
 
     override fun onLoadingComplete() {
         activity.let {
-            if (it is IMainActivity)
-                it.showLoginScreen()
+            if (it is ICredentionalsRouter)
+                it.showLogin(this.view)
         }
     }
 }

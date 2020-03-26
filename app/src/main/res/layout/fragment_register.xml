@@ -118,7 +118,7 @@
 
             <Button
                 android:id="@+id/btnDoRegister"
-                android:onClick="doRegistration"
+                android:onClick="showLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"

@@ -6,12 +6,6 @@ import com.example.kafgoodline.R
 
 abstract class ABaseActivity : AppCompatActivity() {
 
-    init {
-        inject()
-    }
-
-    abstract fun inject()
-
     fun replace(fragment: Fragment, backStack: String? = null, tag: String? = null) {
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, tag).apply {
             backStack?.let {

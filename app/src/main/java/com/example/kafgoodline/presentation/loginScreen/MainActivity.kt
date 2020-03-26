@@ -3,29 +3,26 @@ package com.example.kafgoodline.presentation.loginScreen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.example.kafgoodline.App
 import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseActivity
-import com.example.kafgoodline.domain.di.DaggerAppComponent
 import com.example.kafgoodline.presentation.loginScreen.loading.LoadFragment
 import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
 import com.example.kafgoodline.presentation.mainScreen.WorkActivity
-import javax.inject.Inject
 
 
-class MainActivity : IMainActivity, ICredentionalsRouter, ABaseActivity() {
+class MainActivity : ICredentionalsRouter, ABaseActivity() {
 
-    @Inject
-    @InjectPresenter
-    lateinit var presenter: MainActivityPresenter
+    companion object {
 
-    @ProvidePresenter
-    fun providePresenter() = presenter
-
-    override fun inject() {
-        DaggerAppComponent.create().inject(this)
+        fun show() {
+            App.appContext.let {
+                it.startActivity(Intent(it, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                })
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,11 +35,11 @@ class MainActivity : IMainActivity, ICredentionalsRouter, ABaseActivity() {
         showLoading()
     }
 
-    override fun showRegistrationScreen() {
+    override fun showRegistration(view: View) {
         replace(RegisterFragment(), "Registration")
     }
 
-    override fun showLoginScreen() {
+    override fun showLogin(view: View?) {
         replace(LoginFragment())
     }
 
@@ -54,18 +51,4 @@ class MainActivity : IMainActivity, ICredentionalsRouter, ABaseActivity() {
         val intent = Intent(this, WorkActivity::class.java)
         startActivity(intent)
     }
-
-    fun registerAction(view: View) {
-        presenter.showRegister()
-    }
-
-    fun doRegistration() {
-        presenter.showLogin()
-    }
-
-    fun doWork() {
-        presenter.goToWork()
-    }
-
-
 }

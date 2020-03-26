@@ -8,8 +8,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseFragment
-import com.example.kafgoodline.domain.di.DaggerAppComponent
-import com.example.kafgoodline.presentation.loginScreen.MainActivity
+import com.example.kafgoodline.domain.di.component.DaggerAppComponent
+import com.example.kafgoodline.presentation.loginScreen.ICredentionalsRouter
 import kotlinx.android.synthetic.main.fragment_register.*
 import javax.inject.Inject
 
@@ -41,7 +41,9 @@ class RegisterFragment : ABaseFragment(), IRegistrationView {
     }
 
     override fun showLoginSc() {
-        val r: MainActivity = getActivity() as MainActivity
-        r.showLoginScreen()
+        activity.let {
+            if (it is ICredentionalsRouter)
+                it.showLogin(this.view)
+        }
     }
 }

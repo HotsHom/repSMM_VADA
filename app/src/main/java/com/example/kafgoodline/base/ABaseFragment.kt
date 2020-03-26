@@ -32,4 +32,8 @@ abstract class ABaseFragment : MvpAppCompatFragment() {
     fun toast(@StringRes stringId: Int) {
         Toast.makeText(context, stringId, Toast.LENGTH_LONG).show()
     }
+
+    fun visibility(view: View?, value: Boolean = true){
+        view?.visibility = if (value) View.VISIBLE else View.GONE
+    }
 }

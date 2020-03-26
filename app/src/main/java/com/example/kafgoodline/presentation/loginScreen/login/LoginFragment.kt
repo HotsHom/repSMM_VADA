@@ -8,8 +8,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseFragment
-import com.example.kafgoodline.domain.di.DaggerAppComponent
-import com.example.kafgoodline.presentation.loginScreen.MainActivity
+import com.example.kafgoodline.domain.di.component.DaggerAppComponent
+import com.example.kafgoodline.presentation.loginScreen.ICredentionalsRouter
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -32,17 +32,34 @@ class LoginFragment : ABaseFragment(), ILoginView {
         super.onViewCreated(view, savedInstanceState)
 
         btlogin.setOnClickListener {
-            presenter.login("${etLogin.text}", "${etPass.text}")
+            val login : String = "${etLogin.text}"
+            val password : String = "${etPass.text}"
+
+            if (login.isEmpty() || password.isEmpty()){
+                toast(R.string.error_login_password)
+                return@setOnClickListener
+            }
+
+            presenter.login(login, password)
         }
     }
 
-    override fun showError(message: String) {
+    override fun showError(message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
     override fun showWork() {
-        val r: MainActivity = getActivity() as MainActivity
-        r.doWork()
+        activity.let {
+            if (it is ICredentionalsRouter)
+                it.goToMainWorkScreen()
+        }
     }
 
+    override fun lock() {
+        visibility(flBtnContainer)
+    }
+
+    override fun unlock() {
+        visibility(flBtnContainer, false)
+    }
 }

@@ -2,7 +2,8 @@ package com.example.kafgoodline.presentation.loginScreen.login
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.example.kafgoodline.repositories.UserRepository
+import com.example.kafgoodline.base.SubRX
+import com.example.kafgoodline.domain.repositories.UserRepository
 import javax.inject.Inject
 
 @InjectViewState
@@ -11,20 +12,22 @@ class LoginPresenter : MvpPresenter<ILoginView> {
     @Inject
     constructor()
 
-    var userRepository: UserRepository = UserRepository()
+    @Inject
+    lateinit var userRepository: UserRepository
 
-    fun login(login: String, pass: String) {
+    fun login(login: String, password: String) {
 
-        //TODO Инициализация окна блокировки
+        userRepository.login(SubRX { _, e ->
 
-        userRepository.login({
-            //TODO Скрытие окна блокировки
-            if (it == "1 : 1") {
-                viewState.showWork()
-            } else {
-                viewState.showError(it)
+            if (e != null) {
+                e.printStackTrace()
+                viewState.showError(e.message)
+                return@SubRX
             }
-        }, login, pass)
+
+            viewState.showWork()
+        }, login, password)
     }
+
 
 }

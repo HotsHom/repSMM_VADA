@@ -2,14 +2,14 @@ package com.example.kafgoodline.presentation.loginScreen.registration
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.example.kafgoodline.repositories.UserRepository
+import com.example.kafgoodline.domain.repositories.UserRepository
 import javax.inject.Inject
 
 @InjectViewState
 class RegistratonPresenter : MvpPresenter<IRegistrationView> {
 
-
-    var userRepository: UserRepository = UserRepository()
+    @Inject
+    lateinit var userRepository: UserRepository
 
     @Inject
     constructor()
