@@ -13,14 +13,16 @@ class UserStorage {
     constructor()
 
     fun save(user: User, login: String, pass: String) {
+        user.username = login
         this.user = user
-        this.user!!.username = login
+
     }
 
-    fun save(user: User, flag: String? = null){
+    fun save(_user: User, flag: String? = null){
         if (flag.isNullOrEmpty()){
-            this.user!!.access = user.access
-            this.user!!.refresh = user.refresh
+            val user = this.user ?: return
+                user.access = _user.access
+                user.refresh = _user.access
         }
     }
 
