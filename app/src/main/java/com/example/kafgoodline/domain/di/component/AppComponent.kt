@@ -5,6 +5,8 @@ import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import com.example.kafgoodline.presentation.loginScreen.loading.LoadFragment
 import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
+import com.example.kafgoodline.presentation.mainScreen.WorkActivity
+import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -19,5 +21,7 @@ interface AppComponent {
     fun inject(target: LoginFragment)
     fun inject(target: LoadFragment)
     fun inject(target: MainActivity)
+    fun inject(target: StartFragment)
+    fun inject(target: WorkActivity)
 
 }

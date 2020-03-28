@@ -1,7 +1,6 @@
 package com.example.kafgoodline.domain.repositories.local
 
-import com.example.kafgoodline.domain.di.models.Token
-import com.example.kafgoodline.domain.di.models.User
+import com.example.kafgoodline.domain.repositories.models.User
 import javax.inject.Inject
 
 class UserStorage {
@@ -23,6 +22,12 @@ class UserStorage {
             val user = this.user ?: return
                 user.access = _user.access
                 user.refresh = _user.access
+        }
+        if(flag == "Finish"){
+            val  user = this.user ?: return
+                user.firstname = _user.firstname
+                user.secondname = _user.secondname
+                user.isNewUser = false
         }
     }
 

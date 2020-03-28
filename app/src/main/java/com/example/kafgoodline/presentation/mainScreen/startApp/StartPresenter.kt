@@ -1,4 +1,4 @@
-package com.example.kafgoodline.presentation.loginScreen.login
+package com.example.kafgoodline.presentation.mainScreen.startApp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
@@ -7,7 +7,7 @@ import com.example.kafgoodline.domain.repositories.UserRepository
 import javax.inject.Inject
 
 @InjectViewState
-class LoginPresenter : MvpPresenter<ILoginView> {
+class StartPresenter : MvpPresenter<IStartView> {
 
     @Inject
     constructor()
@@ -15,23 +15,17 @@ class LoginPresenter : MvpPresenter<ILoginView> {
     @Inject
     lateinit var userRepository: UserRepository
 
-    fun login(login: String, password: String) {
-
-        userRepository.login(SubRX { _, e ->
-
-
+    fun putFSName(firstname : String, secondname: String){
+        userRepository.putFSName(SubRX { _, e ->
 
             if (e != null) {
                 e.printStackTrace()
                 viewState.showError(e.message)
-                viewState.unlock()
                 return@SubRX
             }
 
-
-            viewState.showWork()
-        }, login, password)
+            viewState.showHome()
+        }, firstname, secondname)
     }
-
 
 }

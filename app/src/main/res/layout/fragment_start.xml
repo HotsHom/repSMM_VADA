@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.mainScreen.Profile.ProfileFragment"
+    android:background="#20262b">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Добро пожаловать"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Завершите регистрацию, чтобы начать работу"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Заполните поля ниже"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@drawable/line"
+                android:layout_marginHorizontal="20dp"/>
+
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_style_white"
+                android:hint="ИМЯ"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="#fff"
+                android:textColorHint="#9E9E9E"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="20dp"/>
+
+            <EditText
+                android:id="@+id/etSecondName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_style_white"
+                android:hint="ФАМИЛИЯ"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="#fff"
+                android:textColorHint="#9E9E9E"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. Прочтите краткое руководство"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@drawable/line"
+                android:layout_marginHorizontal="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/text_DescribeApp"
+                android:textColor="#fff"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@drawable/line"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <CheckedTextView
+                android:id="@+id/chtvSuccess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Я прочёл(а) краткое руководство"
+                android:checkMarkTint = "#fff"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="#fff"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"/>
+
+            <Button
+                android:id="@+id/btnFinish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Завершить регистрацию"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/butt_style_color"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

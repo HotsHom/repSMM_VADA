@@ -10,10 +10,10 @@ import javax.inject.Inject
 class RegistratonPresenter : MvpPresenter<IRegistrationView> {
 
     @Inject
-    lateinit var userRepository: UserRepository
+    constructor()
 
     @Inject
-    constructor()
+    lateinit var userRepository: UserRepository
 
     fun registration(login: String, pass1: String) {
 

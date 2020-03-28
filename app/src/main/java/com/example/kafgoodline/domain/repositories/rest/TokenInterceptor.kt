@@ -1,10 +1,7 @@
 package com.example.kafgoodline.domain.repositories.rest
 
-import android.media.session.MediaSession
-import android.support.v4.media.session.MediaSessionCompat
 import android.util.Log
-import com.example.kafgoodline.domain.di.models.Token
-import com.example.kafgoodline.domain.di.models.User
+import com.example.kafgoodline.domain.repositories.models.User
 import com.example.kafgoodline.domain.repositories.UserRepository
 import com.example.kafgoodline.exceptions.AuthException
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
@@ -40,7 +37,7 @@ class TokenInterceptor : Interceptor {
 
         var token = userRepository.getUser()
         if (token == null) {
-            WorkActivity.show()
+            MainActivity.show()
             throw AuthException("Auth is NULL")
         }
 

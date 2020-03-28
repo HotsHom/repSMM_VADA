@@ -28,7 +28,7 @@ schema_view = get_swagger_view(title="Documentation")
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        fields = ['username', 'email', 'first_name', 'last_name']
 
 
 # ViewSets define the view behavior.
@@ -39,7 +39,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register('users/', UserViewSet)
+router.register('users', UserViewSet)
 
 
 # Wire up our API using automatic URL routing.

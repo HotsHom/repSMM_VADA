@@ -2,8 +2,7 @@ package com.example.kafgoodline.domain.repositories.rest.api
 
 import com.example.kafgoodline.base.ABaseRestApi
 import com.example.kafgoodline.base.IRestClient
-import com.example.kafgoodline.domain.di.models.Token
-import com.example.kafgoodline.domain.di.models.User
+import com.example.kafgoodline.domain.repositories.models.User
 import com.example.kafgoodline.domain.di.module.NetModule
 import com.example.kafgoodline.domain.repositories.rest.service.IUserRestApiService
 import javax.inject.Inject
@@ -26,4 +25,8 @@ class UserRestApi : ABaseRestApi<IUserRestApiService> {
 
     fun refreshToken(refreshToken: String?)
             = service.refreshToken(refreshToken)
+
+    fun putFSName(user: User)
+        = user.id?.let { service.putFSName(it, user) }
+
 }

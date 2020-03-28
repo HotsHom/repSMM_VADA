@@ -32,6 +32,7 @@ class LoginFragment : ABaseFragment(), ILoginView {
         super.onViewCreated(view, savedInstanceState)
 
         btlogin.setOnClickListener {
+            lock()
             val login : String = "${etLogin.text}"
             val password : String = "${etPass.text}"
 

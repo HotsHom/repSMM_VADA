@@ -1,13 +1,9 @@
 package com.example.kafgoodline.domain.repositories.rest.service
 
-import retrofit2.http.Body
-import retrofit2.http.PUT
 import io.reactivex.Observable
-import retrofit2.http.Header
-import retrofit2.http.POST
 import retrofit2.Call
-import com.example.kafgoodline.domain.di.models.Token
-import com.example.kafgoodline.domain.di.models.User
+import com.example.kafgoodline.domain.repositories.models.User
+import retrofit2.http.*
 
 interface IUserRestApiService {
 
@@ -24,6 +20,16 @@ interface IUserRestApiService {
      */
     @POST("/auth/jwt/create/")
     fun login(@Body user: User): Observable<User>
+
+    /**
+     * Изменение имени и фамилии пользователя. ИСПОЛЬЗОВАТЬ С ТОКЕНОМ!
+     */
+    @PUT("/list_user/users/{id}/")
+    fun putFSName(
+        @Path("id") id: Int,
+        @Body user: User
+    ): Observable<User>
+
 
 
     /**
