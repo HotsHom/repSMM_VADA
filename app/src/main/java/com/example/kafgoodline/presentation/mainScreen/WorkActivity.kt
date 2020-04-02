@@ -8,7 +8,7 @@ import com.example.kafgoodline.App
 import com.example.kafgoodline.base.ABaseActivity
 import com.example.kafgoodline.domain.di.component.DaggerAppComponent
 import com.example.kafgoodline.domain.repositories.UserRepository
-import com.example.kafgoodline.presentation.mainScreen.Profile.ProfileFragment
+import com.example.kafgoodline.presentation.mainScreen.profile.ProfileFragment
 import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
 import kotlinx.android.synthetic.main.activity_work.*
 import javax.inject.Inject
@@ -41,13 +41,12 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work)
 
-        if(userRepository.getUserStatus() == null && userRepository.getUser() != null){
+        if(userRepository.getUserStatus() != null && userRepository.getUserStatus() == true){
             supportFragmentManager.beginTransaction()
-                .add(
+                .replace(
                     R.id.container,
                     StartFragment()
                 )
-                .addToBackStack(null)
                 .commit()
             bar.visibility = View.GONE
         }else{
@@ -62,12 +61,15 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
 
     override fun showHome() {
         supportFragmentManager.beginTransaction()
-            .add(
+            .replace(
                 R.id.container,
                 ProfileFragment()
-                //TODO ПОМЕНЯТЬ НА ДОМАШНЮЮ СТРАНИЦУ
+                //TODO ПОМЕНЯТЬ НА ДОМАШНЮЮ СТРАНИЦУ И прописать меню
             )
-            .addToBackStack(null)
             .commit()
+    }
+
+    fun goFinish(view: View) {
+
     }
 }

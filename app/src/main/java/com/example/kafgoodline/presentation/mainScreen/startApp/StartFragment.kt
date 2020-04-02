@@ -45,6 +45,14 @@ class StartFragment : ABaseFragment(), IStartView {
         return inflater.inflate(R.layout.fragment_start, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnFinish.setOnClickListener{
+            doFinishRegsidtarion()
+        }
+    }
+
     override fun doFinishRegsidtarion() {
         if (chtvSuccess.isChecked){
             if (etFirstName.text.isNotEmpty() || etSecondName.text.isNotEmpty()){

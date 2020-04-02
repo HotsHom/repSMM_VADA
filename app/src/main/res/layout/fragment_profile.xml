@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.mainScreen.Profile.ProfileFragment"
+    tools:context=".presentation.mainScreen.profile.ProfileFragment"
     android:background="#20262b">
 
     <!-- TODO: Update blank fragment layout -->
@@ -63,7 +63,7 @@
                         android:id="@+id/last_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Носов"
+                        android:text="@string/secondName"
                         android:gravity="center"
                         android:textSize="20sp"
                         android:layout_marginTop="10dp" />
@@ -72,7 +72,7 @@
                         android:id="@+id/first_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Данила"
+                        android:text="@string/firstName"
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
                         android:textSize="20sp"
@@ -83,7 +83,7 @@
                     android:id="@+id/username_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="hotshomwork@gmail.com"
+                    android:text="username"
                     android:gravity="center"
                     android:textSize="15sp"
                     android:textColor="#B4B4B4" />

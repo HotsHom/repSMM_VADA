@@ -42,6 +42,7 @@ class LoginFragment : ABaseFragment(), ILoginView {
             }
 
             presenter.login(login, password)
+
         }
     }
 
@@ -54,6 +55,7 @@ class LoginFragment : ABaseFragment(), ILoginView {
             if (it is ICredentionalsRouter)
                 it.goToMainWorkScreen()
         }
+        unlock()
     }
 
     override fun lock() {

@@ -2,8 +2,10 @@ package com.example.kafgoodline.presentation.mainScreen.startApp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.example.kafgoodline.R
 import com.example.kafgoodline.base.SubRX
 import com.example.kafgoodline.domain.repositories.UserRepository
+import com.example.kafgoodline.domain.repositories.UserRepositoryWithToken
 import javax.inject.Inject
 
 @InjectViewState
@@ -13,10 +15,10 @@ class StartPresenter : MvpPresenter<IStartView> {
     constructor()
 
     @Inject
-    lateinit var userRepository: UserRepository
+    lateinit var userRepositoryWithToken: UserRepositoryWithToken
 
     fun putFSName(firstname : String, secondname: String){
-        userRepository.putFSName(SubRX { _, e ->
+        userRepositoryWithToken.putFSName(SubRX { _, e ->
 
             if (e != null) {
                 e.printStackTrace()

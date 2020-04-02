@@ -30,4 +30,6 @@
         \n
         ...
     </string>
+    <string name="secondName">SecondName</string>
+    <string name="firstName">FirstName</string>
 </resources>

@@ -123,8 +123,9 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                android:buttonTint="#fff"
+                android:checkMarkTint="#fff"
                 android:checked="false"
+                android:clickable="true"
                 android:gravity="center"
                 android:text="Я прочёл(а) краткое руководство"
                 android:textColor="#fff"
@@ -137,8 +138,7 @@
                 android:text="Завершить регистрацию"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/butt_style_color"
-                android:onClick="goFinish"/>
+                android:background="@drawable/butt_style_color"/>
 
         </LinearLayout>
     </ScrollView>

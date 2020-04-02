@@ -5,6 +5,7 @@ import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import com.example.kafgoodline.presentation.loginScreen.loading.LoadFragment
 import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
+import com.example.kafgoodline.presentation.mainScreen.profile.ProfileFragment
 import com.example.kafgoodline.presentation.mainScreen.WorkActivity
 import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
 import dagger.Component
@@ -23,5 +24,5 @@ interface AppComponent {
     fun inject(target: MainActivity)
     fun inject(target: StartFragment)
     fun inject(target: WorkActivity)
-
+    fun inject(target: ProfileFragment)
 }

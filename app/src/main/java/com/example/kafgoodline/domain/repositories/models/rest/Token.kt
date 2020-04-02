@@ -1,4 +1,4 @@
-package com.example.kafgoodline.domain.repositories.models
+package com.example.kafgoodline.domain.repositories.models.rest
 
 data class Token(
 

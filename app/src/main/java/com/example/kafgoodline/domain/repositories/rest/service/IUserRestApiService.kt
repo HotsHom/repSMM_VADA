@@ -2,7 +2,7 @@ package com.example.kafgoodline.domain.repositories.rest.service
 
 import io.reactivex.Observable
 import retrofit2.Call
-import com.example.kafgoodline.domain.repositories.models.User
+import com.example.kafgoodline.domain.repositories.models.rest.User
 import retrofit2.http.*
 
 interface IUserRestApiService {
@@ -37,6 +37,6 @@ interface IUserRestApiService {
      */
     @POST("/auth/jwt/refresh/")
     fun refreshToken(
-        @Body refreshToken: String?
+        @Body user: User
     ): Call<User>
 }

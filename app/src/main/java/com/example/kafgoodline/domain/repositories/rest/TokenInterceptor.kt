@@ -1,11 +1,10 @@
 package com.example.kafgoodline.domain.repositories.rest
 
 import android.util.Log
-import com.example.kafgoodline.domain.repositories.models.User
+import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.UserRepository
 import com.example.kafgoodline.exceptions.AuthException
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
-import com.example.kafgoodline.presentation.mainScreen.WorkActivity
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -17,7 +16,7 @@ class TokenInterceptor : Interceptor {
 
     companion object {
 
-        const val HEADER_AUTHORIZATION = "Bearer"
+        const val HEADER_AUTHORIZATION = "Authorization"
     }
 
 
@@ -89,7 +88,7 @@ class TokenInterceptor : Interceptor {
 
             .addHeader("Content-Type", "application/json")
             .addHeader("Accept", "application/json")
-            .addHeader(HEADER_AUTHORIZATION, token.access)
+            .addHeader(HEADER_AUTHORIZATION, "Bearer " + token.access)
             .build()
 
         Log.d("REST", "${request.headers()}")

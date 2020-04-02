@@ -1,5 +1,6 @@
 package com.example.kafgoodline.presentation.mainScreen.startApp
 
+import android.view.View
 import com.arellomobile.mvp.MvpView
 
 interface IStartView : MvpView {
