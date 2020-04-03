@@ -12,7 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UserRepositoryWithToken {
+class UseTokenRepository {
 
     private val restWithToken : UserWithTokenRestApi
     private val storage: UserStorage

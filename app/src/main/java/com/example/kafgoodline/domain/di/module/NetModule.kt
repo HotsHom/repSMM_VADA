@@ -1,7 +1,7 @@
 package com.example.kafgoodline.domain.di.module
 
 import com.example.kafgoodline.base.IRestClient
-import com.example.kafgoodline.domain.repositories.UserRepository
+import com.example.kafgoodline.domain.repositories.AuthRepository
 import com.example.kafgoodline.domain.repositories.rest.RestClient
 import com.example.kafgoodline.domain.repositories.rest.TokenInterceptor
 import com.google.gson.Gson
@@ -33,7 +33,7 @@ class NetModule {
 
     @Provides
     @Singleton
-    fun provideTokenInterceptor(userRepository: UserRepository) = TokenInterceptor(userRepository)
+    fun provideTokenInterceptor(userRepository: AuthRepository) = TokenInterceptor(userRepository)
 
 
     @Provides

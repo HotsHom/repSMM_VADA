@@ -7,7 +7,7 @@ import com.example.kafgoodline.R
 import com.example.kafgoodline.App
 import com.example.kafgoodline.base.ABaseActivity
 import com.example.kafgoodline.domain.di.component.DaggerAppComponent
-import com.example.kafgoodline.domain.repositories.UserRepository
+import com.example.kafgoodline.domain.repositories.AuthRepository
 import com.example.kafgoodline.presentation.mainScreen.profile.ProfileFragment
 import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
 import kotlinx.android.synthetic.main.activity_work.*
@@ -27,7 +27,7 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
     }
 
     @Inject
-    lateinit var userRepository: UserRepository
+    lateinit var userRepository: AuthRepository
 
     init {
         inject()

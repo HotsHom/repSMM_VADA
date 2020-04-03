@@ -2,7 +2,7 @@ package com.example.kafgoodline.domain.repositories.rest
 
 import android.util.Log
 import com.example.kafgoodline.domain.repositories.models.rest.User
-import com.example.kafgoodline.domain.repositories.UserRepository
+import com.example.kafgoodline.domain.repositories.AuthRepository
 import com.example.kafgoodline.exceptions.AuthException
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import okhttp3.Interceptor
@@ -20,12 +20,12 @@ class TokenInterceptor : Interceptor {
     }
 
 
-    private val userRepository: UserRepository
+    private val userRepository: AuthRepository
     private val lock = ReentrantLock()
 
 
     @Inject
-    constructor(userRepository: UserRepository) {
+    constructor(userRepository: AuthRepository) {
         this.userRepository = userRepository
     }
 
