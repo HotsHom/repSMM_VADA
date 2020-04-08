@@ -7,9 +7,12 @@
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/vk_logo"
-        android:layout_gravity="center" />
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:background="@drawable/logo_smm"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
+
+
 
 </FrameLayout>
