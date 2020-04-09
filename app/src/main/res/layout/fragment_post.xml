@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.mainScreen.homePage.HomeFragment"
+    android:background="#20262b">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:background="#15181B">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Новый пост"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="true"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:gravity="top"
+                    android:paddingTop="20dp"
+                    android:paddingHorizontal="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:text="Выберете соц. сеть(и) для постинга. Заполни поля. И отправь пост. Всё просто!"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:gravity="top"
+                    android:paddingHorizontal="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="80dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/radius_block_white"
+                    android:layout_marginHorizontal="20dp"
+
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Выберете соц. сеть(и) для постинга"
+                        android:textColor="#1B1B1B"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageButton
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/vk_logo_color"/>
+
+                        <ImageButton
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/twitter_logo"
+                            android:layout_marginLeft="10dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/radius_block_white"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        style="@style/Base.Widget.MaterialComponents.AutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@drawable/edit_style_black"
+                        android:textSize="12sp"
+                        android:hint="ЗАГОЛОВОК"
+                        android:textColorHint="#777676"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/radius_block_white"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        style="@style/Base.Widget.MaterialComponents.AutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/edit_style_black"
+                        android:textSize="12sp"
+                        android:hint="ТЕКСТ ПОСТА"
+                        android:textColorHint="#777676"
+                        android:gravity="start"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Допустимое количество символов: "
+                            android:textSize="12dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 / 0"
+                            android:textSize="12dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/radius_block_white"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ОТЛОЖЕННАЯ ПУБЛИКАЦИЯ"
+                        android:background="@drawable/butt_style_color_low_radius"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Выберете время для постинга"
+                            android:textColor="#1B1B1B"
+                            android:gravity="center"
+                            android:layout_marginTop="10dp"/>
+
+                        <TimePicker
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Отменить"
+                            android:textAllCaps="true"
+                            android:background="@drawable/butt_style_black_low_radius"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="20dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="100dp"
+                    android:text="ОПУБЛИКОВАТЬ"
+                    android:background="@drawable/butt_style_color_low_radius"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>
