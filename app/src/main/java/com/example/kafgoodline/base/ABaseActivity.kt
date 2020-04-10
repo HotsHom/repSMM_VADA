@@ -1,5 +1,7 @@
 package com.example.kafgoodline.base
 
+import android.content.pm.ActivityInfo
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.kafgoodline.R
@@ -12,5 +14,10 @@ abstract class ABaseActivity : AppCompatActivity() {
                 addToBackStack(it)
             }
         }.commit()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 }

@@ -5,6 +5,7 @@ import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.models.toBase
 import com.example.kafgoodline.domain.repositories.models.toRealm
 import io.realm.Realm
+import io.realm.RealmConfiguration
 import javax.inject.Inject
 
 class UserStorage {
@@ -34,7 +35,7 @@ class UserStorage {
 
     fun save(_user: User, flag: String? = null){
         if (flag.isNullOrEmpty()){
-            val user = this.user ?: return
+            val user = getUser() ?: return
                 user.access = _user.access
                 user.refresh = _user.access
             Realm.getDefaultInstance().use {
@@ -44,7 +45,7 @@ class UserStorage {
             }
         }
         if(flag == "Finish"){
-            val  user = this.user ?: return
+            val  user = getUser() ?: return
                 user.firstname = _user.firstname
                 user.secondname = _user.secondname
                 user.isNewUser = false
@@ -76,5 +77,9 @@ class UserStorage {
                     user = this
             }
         }
+    }
+
+    fun Delete(){
+        Realm.deleteRealm(Realm.getDefaultConfiguration())
     }
 }

@@ -26,7 +26,7 @@ SECRET_KEY = '8eth9u)^h+04ecq3h6gc3opiu3a0=m0#489hl+2zdx8s%l3ack'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['4b182e65.ngrok.io']
+ALLOWED_HOSTS = ['e4779f59.ngrok.io']
 
 
 # Application definition
@@ -65,7 +65,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     'JWT_VERIFY': True,
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days = 1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
     'ROTATE_REFRESH_TOKENS': True,
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',

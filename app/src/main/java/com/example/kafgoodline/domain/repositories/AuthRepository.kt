@@ -63,4 +63,8 @@ class AuthRepository {
 
         return null
     }
+
+    fun DeleteUser(){
+        storage.Delete()
+    }
 }

@@ -17,6 +17,10 @@ class LoginPresenter : MvpPresenter<ILoginView> {
 
     fun login(login: String, password: String) {
 
+
+        userRepository.DeleteUser()
+
+
         userRepository.login(SubRX { _, e ->
 
 

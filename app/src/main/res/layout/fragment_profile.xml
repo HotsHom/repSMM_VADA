@@ -180,7 +180,7 @@
                     <ImageButton
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background=""
+                        android:background="#fff"
                         android:src="@drawable/ic_settings_black_24dp"
                         android:textSize="10sp"
                         android:textColor="#151515"
@@ -196,7 +196,7 @@
                     android:weightSum="12"
                     android:layout_marginTop="5dp"
 
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -236,7 +236,7 @@
                     <ImageButton
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background=""
+                        android:background="#fff"
                         android:src="@drawable/ic_check_black_24dp"
                         android:textSize="10sp"
                         android:textColor="#151515"
@@ -439,7 +439,7 @@
                     <ImageButton
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background=""
+                        android:background="#fff"
                         android:src="@drawable/ic_check_black_24dp"
                         android:textSize="10sp"
                         android:textColor="#151515"
@@ -464,15 +464,8 @@
                 android:background="@drawable/butt_style_color"
                 android:gravity="center"
                 android:layout_marginTop="25dp"
-                android:layout_marginHorizontal="20dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:paddingBottom="50dp"
-                android:layout_marginTop="650dp">
-
-            </RelativeLayout>
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="50dp"/>
 
         </LinearLayout>
 
