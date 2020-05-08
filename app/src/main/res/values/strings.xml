@@ -1,4 +1,5 @@
 <resources>
+    <integer name="com_vk_sdk_AppId">7454841</integer>
     <string name="app_name">KafGoodLine</string>
     <string name="register">Зарегистрируйте его!</string>
     <string name="username">USERNAME</string>
@@ -32,4 +33,5 @@
     </string>
     <string name="secondName">SecondName</string>
     <string name="firstName">FirstName</string>
+    <string name="server">http://127.0.0.1:8000</string>
 </resources>

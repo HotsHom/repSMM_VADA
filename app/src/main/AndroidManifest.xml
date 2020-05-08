@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.vk.api.sdk.ui.VKWebViewAuthActivity" android:label="ServiceActivity" android:theme="@style/VK.Transparent" />
         <activity android:name=".presentation.mainScreen.WorkActivity"></activity>
         <activity android:name=".presentation.loginScreen.MainActivity">
             <intent-filter>

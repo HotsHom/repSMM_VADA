@@ -12,5 +12,6 @@ data class User(
     var secondname: String? = null,
     var access: String? = null,
     var refresh: String? = null,
-    var isNewUser: Boolean? = true
+    var isNewUser: Boolean? = true,
+    var vkToken: String? = null
 )

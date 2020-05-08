@@ -1,10 +1,6 @@
 package com.example.kafgoodline.presentation.mainScreen.profile.web
 
 import android.annotation.TargetApi
-import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,18 +9,20 @@ import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.kafgoodline.R
+import com.example.kafgoodline.base.SubRX
+import com.example.kafgoodline.domain.repositories.UseTokenRepository
 import kotlinx.android.synthetic.main.fragment_web.*
-import org.json.JSONException
-import org.json.JSONObject
-import java.util.*
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  */
 class WebFragment : Fragment() {
+
+    @Inject
+    lateinit var userRepositoryWithToken: UseTokenRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,11 +32,17 @@ class WebFragment : Fragment() {
 
         var webView : WebView = webview
         webView.webViewClient = MyWebViewClient()
+        webView.settings.javaScriptEnabled = true
+        // указываем страницу загрузки
+        webView.loadUrl("https://oauth.vk.com/authorize?client_id=7273900&scope=photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,email,notifications,stats,ads,offline,docs,pages,stats,notifications&response_type=token")
 
         return inflater.inflate(R.layout.fragment_web, container, false)
     }
 
-    private class MyWebViewClient : WebViewClient() {
+    public class MyWebViewClient : WebViewClient() {
+        @Inject
+        lateinit var userRepositoryWithToken: UseTokenRepository
+
         @TargetApi(Build.VERSION_CODES.N)
         override fun shouldOverrideUrlLoading(
             view: WebView,
@@ -50,64 +54,24 @@ class WebFragment : Fragment() {
                 val words1 = URL.split("/").toTypedArray()
                 val words2 = words1[3].split("=").toTypedArray()
                 val words3 = words2[1].split("&").toTypedArray()
-                API()
+                API(words3[0])
             }
             view.loadUrl(request.url.toString())
             return true
         }
+
+        private fun API(words3: String) {
+            userRepositoryWithToken.putVkTokenFinction(SubRX { _, e ->
+
+                if (e != null) {
+                    e.printStackTrace()
+                    //Переход к фрагментам рабочего экрана
+                    return@SubRX
+                }
+            }, words3)
+        }
     }
 
-    private fun API() {
-        val url = "http://c2b2a947.ngrok.io/api/tokens/"
-        val params =
-            HashMap<String?, String?>()
-        params["name"] = "vk"
-        params["key"] = key
-        params["user"] = prefs.getString("USER_ID", "")
-        // Request a string response from the provided URL.
-        val stringRequest =
-            JsonObjectRequest(Request.Method.POST, url, JSONObject(params),
-                object : Listener<JSONObject?>() {
-                    fun onResponse(response: JSONObject) {
-                        try {
-                            val jsonArray = response.getString("key")
-                            //JSONObject jsonObject = jsonArray.getJSONObject(0);
-//String code = String.valueOf(jsonObject);
-//textView1.setText("Response => "+ code );
-//textView1.setText("SUCCESSFUL " + jsonArray);
-                            val intent = Intent(this@WEBActivity2, HomeActivity::class.java)
-                            startActivity(intent)
-                        } catch (e: JSONException) {
-                            val builder =
-                                AlertDialog.Builder(this@WEBActivity2)
-                            builder.setTitle("Важное сообщение!")
-                                .setMessage(e.message)
-                                .setIcon(R.drawable.ava)
-                                .setCancelable(false)
-                                .setNegativeButton("ОК, иду на кухню",
-                                    DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
-                            val alert = builder.create()
-                            alert.show()
-                            //textView1.setText(e.getMessage());
-                        }
-                        // Display the first 500 characters of the response string.
-                    }
-                }, object : ErrorListener() {
-                    fun onErrorResponse(error: VolleyError) { //textView1.setText(new String(error.networkResponse.data) + "  | STATUS CODE: " + error.networkResponse.statusCode);
-                        val builder =
-                            AlertDialog.Builder(this@WEBActivity2)
-                        builder.setTitle("Важное сообщение!")
-                            .setMessage(String(error.networkResponse.data) + "  | STATUS CODE: " + error.networkResponse.statusCode)
-                            .setIcon(R.drawable.ava)
-                            .setCancelable(false)
-                            .setNegativeButton("ОК, иду на кухню",
-                                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
-                        val alert = builder.create()
-                        alert.show()
-                    }
-                })
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest)
-    }
+
 
 }

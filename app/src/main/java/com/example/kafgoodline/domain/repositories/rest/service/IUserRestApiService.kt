@@ -3,6 +3,7 @@ package com.example.kafgoodline.domain.repositories.rest.service
 import io.reactivex.Observable
 import retrofit2.Call
 import com.example.kafgoodline.domain.repositories.models.rest.User
+import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import retrofit2.http.*
 
 interface IUserRestApiService {
@@ -39,4 +40,10 @@ interface IUserRestApiService {
     fun refreshToken(
         @Body user: User
     ): Call<User>
+
+
+    @POST("/list_user/token/")
+    fun putVkToken(
+        @Body token: UserAPI
+    ): Call<UserAPI>
 }

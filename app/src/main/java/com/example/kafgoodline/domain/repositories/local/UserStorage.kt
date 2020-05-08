@@ -2,6 +2,7 @@ package com.example.kafgoodline.domain.repositories.local
 
 import com.example.kafgoodline.domain.repositories.models.realm.UserRealm
 import com.example.kafgoodline.domain.repositories.models.rest.User
+import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import com.example.kafgoodline.domain.repositories.models.toBase
 import com.example.kafgoodline.domain.repositories.models.toRealm
 import io.realm.Realm
@@ -11,6 +12,7 @@ import javax.inject.Inject
 class UserStorage {
 
     private var user: User? = null
+    private var userApi: UserAPI? = null
 
 
     @Inject
@@ -79,7 +81,20 @@ class UserStorage {
         }
     }
 
+
+
     fun Delete(){
         Realm.deleteRealm(Realm.getDefaultConfiguration())
+    }
+
+    fun saveToken(token: String) {
+        val user = getUser() ?: return
+        user.vkToken = token
+
+        Realm.getDefaultInstance().use {
+            it.executeTransaction {
+                it.insertOrUpdate(user.toRealm())
+            }
+        }
     }
 }

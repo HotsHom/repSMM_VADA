@@ -15,6 +15,7 @@ import com.example.kafgoodline.domain.repositories.models.rest.User
         it.secondname = secondname
         it.isNewUser = isNewUser
         it.username = username
+        it.vkToken = vkToken
         it
     }
 }
@@ -32,6 +33,7 @@ fun UserRealm?.toBase() : User? {
         it.isNewUser = isNewUser
         it.username = username ?: ""
         it.password = password ?: ""
+        it.vkToken = vkToken ?: ""
         it
     }
 }

@@ -15,4 +15,5 @@ open class UserRealm : RealmObject() {
     var access: String? = null
     var refresh: String? = null
     var isNewUser: Boolean? = true
+    var vkToken : String? = null
 }

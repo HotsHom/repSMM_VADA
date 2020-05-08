@@ -1,5 +1,6 @@
 package com.example.kafgoodline.domain.di.module
 
+import com.example.kafgoodline.R
 import com.example.kafgoodline.base.IRestClient
 import com.example.kafgoodline.domain.repositories.AuthRepository
 import com.example.kafgoodline.domain.repositories.rest.RestClient
@@ -21,7 +22,7 @@ class NetModule {
     companion object {
 
         private const val DOMAIN = "e4779f59.ngrok.io"
-        private const val DOMAIN_MAIN_API = "http://$DOMAIN"
+        private const val DOMAIN_MAIN_API = R.string.server.toString()
         private const val CONNECTION_TIMEOUT = 20000L
 
         const val NAME_AUTH_REST_CLIENT = "NAME_AUTH_REST_CLIENT"

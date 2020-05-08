@@ -5,6 +5,7 @@ import com.example.kafgoodline.base.SubRX
 import com.example.kafgoodline.base.standardSubscribeIO
 import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.local.UserStorage
+import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import com.example.kafgoodline.domain.repositories.rest.api.UserRestApi
 import com.example.kafgoodline.domain.repositories.rest.api.UserWithTokenRestApi
 import java.net.HttpURLConnection
@@ -42,5 +43,21 @@ class UseTokenRepository {
         val _user = getUser()
         val isUserStatus = _user?.isNewUser
         return isUserStatus
+    }
+
+    fun putVkTokenFinction(observer: SubRX<User>, token: String){
+
+        var userID = storage.getUser()?.id as String
+
+
+        val userToken = UserAPI()
+        userToken.user_id = userID
+        userToken.token = token
+
+
+        restWithToken.putVkToken(userToken).let {
+            storage.saveToken(token)
+        }
+
     }
 }
