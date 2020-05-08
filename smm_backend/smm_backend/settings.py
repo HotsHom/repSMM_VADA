@@ -26,12 +26,13 @@ SECRET_KEY = '8eth9u)^h+04ecq3h6gc3opiu3a0=m0#489hl+2zdx8s%l3ack'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['e4779f59.ngrok.io']
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'smm_backend',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,9 +43,30 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'djoser',
     'drf_yasg',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.vk',
+    'django.contrib.sites',
 ]
 
+SITE_ID = 1
 
+SOCIALACCOUNT_PROVIDERS = {
+    'vk': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+
+            'client_id':'7281671',
+            'secret':'cLmwZSNrJbn8ZZOJaPDD',
+
+        }
+    }
+}
+
+ACCOUNT_ADAPTER = 'smm_backend.adapter.MyAccountAdapter'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -62,6 +84,14 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 SIMPLE_JWT = {
     'JWT_VERIFY': True,

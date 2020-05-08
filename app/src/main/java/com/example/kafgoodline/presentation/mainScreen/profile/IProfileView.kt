@@ -5,4 +5,5 @@ import com.arellomobile.mvp.MvpView
 interface IProfileView : MvpView {
 
     fun setInformationProfile()
+    fun viewSetting()
 }

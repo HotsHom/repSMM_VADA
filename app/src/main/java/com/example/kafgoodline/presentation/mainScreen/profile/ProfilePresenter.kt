@@ -13,5 +13,8 @@ class ProfilePresenter : MvpPresenter<IProfileView> {
     @Inject
     lateinit var userRepositoryWithToken: UseTokenRepository
 
+    fun viewVkSett(){
+        viewState.viewSetting()
+    }
 
 }

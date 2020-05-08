@@ -27,11 +27,18 @@ class ProfileFragment : ABaseFragment(), IProfileView {
     @ProvidePresenter
     fun providePresenter() = presenter
 
+    var flag : Boolean = true
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+        btnViewVkSettings.setOnClickListener {
+            presenter.viewVkSett()
+        }
+
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -50,5 +57,10 @@ class ProfileFragment : ABaseFragment(), IProfileView {
         first_name.text = presenter.userRepositoryWithToken.getUser()?.firstname
         last_name.text = presenter.userRepositoryWithToken.getUser()?.secondname
         username_profile.text = presenter.userRepositoryWithToken.getUser()?.username
+    }
+
+    override fun viewSetting() {
+        visibility(llVkSetiings, flag)
+        flag = !flag
     }
 }

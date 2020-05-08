@@ -21,6 +21,9 @@ from django.contrib.auth.models import User
 from rest_framework import serializers, viewsets, routers
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
+from .views import TokenViewSet
+from smm_backend.views import PostViewSet
+
 
 schema_view = get_swagger_view(title="Documentation")
 
@@ -40,6 +43,8 @@ class UserViewSet(viewsets.ModelViewSet):
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
+router.register('token', TokenViewSet)
+router.register('post', PostViewSet)
 
 
 # Wire up our API using automatic URL routing.
@@ -48,9 +53,8 @@ urlpatterns = [
     path('api_doc/', schema_view),
 
     path('list_user/', include(router.urls)),
-
+    url(r'^accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
-
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
