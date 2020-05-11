@@ -26,7 +26,7 @@ SECRET_KEY = '8eth9u)^h+04ecq3h6gc3opiu3a0=m0#489hl+2zdx8s%l3ack'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['89cc7472.ngrok.io']
 
 
 # Application definition
@@ -59,8 +59,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # credentials, or list them here:
         'APP': {
 
-            'client_id':'7281671',
-            'secret':'cLmwZSNrJbn8ZZOJaPDD',
+            'client_id':'7454841',
+            'secret':'hKuOZECrtpmKBeBOVmVS',
 
         }
     }

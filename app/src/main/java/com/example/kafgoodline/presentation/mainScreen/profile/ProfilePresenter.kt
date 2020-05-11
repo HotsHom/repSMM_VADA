@@ -17,4 +17,8 @@ class ProfilePresenter : MvpPresenter<IProfileView> {
         viewState.viewSetting()
     }
 
+    fun saveVkIdGroup(id : String){
+        userRepositoryWithToken.saveIdVkGroup(id)
+    }
+
 }

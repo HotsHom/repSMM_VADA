@@ -5,4 +5,5 @@ import com.arellomobile.mvp.MvpView
 interface ILoadView : MvpView {
 
     fun onLoadingComplete()
+    fun onLoadingCompleteLogining()
 }

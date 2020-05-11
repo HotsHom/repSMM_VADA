@@ -21,8 +21,8 @@ class NetModule {
 
     companion object {
 
-        private const val DOMAIN = "e4779f59.ngrok.io"
-        private const val DOMAIN_MAIN_API = R.string.server.toString()
+        private const val DOMAIN = "89cc7472.ngrok.io"
+        private const val DOMAIN_MAIN_API = "http://$DOMAIN"
         private const val CONNECTION_TIMEOUT = 20000L
 
         const val NAME_AUTH_REST_CLIENT = "NAME_AUTH_REST_CLIENT"

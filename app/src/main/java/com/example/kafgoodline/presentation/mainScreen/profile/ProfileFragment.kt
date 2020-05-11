@@ -12,6 +12,11 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseFragment
 import com.example.kafgoodline.domain.di.component.DaggerAppComponent
+import com.example.kafgoodline.presentation.loginScreen.ICredentionalsRouter
+import com.example.kafgoodline.presentation.mainScreen.ICredentionalsRouterWorkActivity
+import com.example.kafgoodline.presentation.mainScreen.profile.web.VkLoginActivity
+import com.vk.sdk.VKScope
+import com.vk.sdk.VKSdk
 import kotlinx.android.synthetic.main.fragment_profile.*
 import javax.inject.Inject
 
@@ -27,7 +32,7 @@ class ProfileFragment : ABaseFragment(), IProfileView {
     @ProvidePresenter
     fun providePresenter() = presenter
 
-    var flag : Boolean = true
+    var flag: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,16 +40,59 @@ class ProfileFragment : ABaseFragment(), IProfileView {
     ): View? {
         // Inflate the layout for this fragment
 
-        btnViewVkSettings.setOnClickListener {
-            presenter.viewVkSett()
-        }
-
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
+
+    /**
+     * Called when a fragment is first attached to its activity.
+     * [.onCreate] will be called after this.
+     *
+     */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setInformationProfile()
+        btnViewVkSettings.setOnClickListener {
+            presenter.viewVkSett()
+        }
+        vk_button.setOnClickListener {
+            linkVkTakeToken()
+        }
+        ibSaveVkIdGroup.setOnClickListener {
+            presenter.saveVkIdGroup(etVkIdGroup.text.toString())
+            toast("ID паблика/группы добавлено")
+        }
+        btnLogout.setOnClickListener {
+            logoutAccount()
+        }
+    }
+
+    private fun logoutAccount() {
+        presenter.userRepositoryWithToken.logout()
+        activity.let {
+            if (it is ICredentionalsRouterWorkActivity)
+                it.goToLoginScreen()
+        }
+    }
+
+    private fun linkVkTakeToken() {
+        var wb: Activity = VkLoginActivity()
+        activity?.let {
+            VKSdk.login(
+                it,
+                    VKScope.EMAIL,
+                    VKScope.GROUPS,
+                    VKScope.NOTIFICATIONS,
+                    VKScope.ADS,
+                    VKScope.AUDIO,
+                    VKScope.NOTIFY,
+                    VKScope.OFFLINE,
+                    VKScope.PAGES,
+                    VKScope.STATS,
+                    VKScope.STATUS,
+                    VKScope.WALL
+            )
+        }
     }
 
     override fun inject() {
@@ -57,6 +105,15 @@ class ProfileFragment : ABaseFragment(), IProfileView {
         first_name.text = presenter.userRepositoryWithToken.getUser()?.firstname
         last_name.text = presenter.userRepositoryWithToken.getUser()?.secondname
         username_profile.text = presenter.userRepositoryWithToken.getUser()?.username
+        if (!presenter.userRepositoryWithToken.getUser()?.vkToken.isNullOrEmpty()) {
+            vk_button.isEnabled = false
+            vk_button.setBackgroundResource(R.drawable.butt_style_black_low_radius)
+            vk_button.isClickable = false
+            linked.text = "1 соц. сеть подключена"
+        }
+        if (!presenter.userRepositoryWithToken.getUser()?.vkIdGroup.isNullOrEmpty()) {
+            etVkIdGroup.setText(presenter.userRepositoryWithToken.getUser()?.vkIdGroup)
+        }
     }
 
     override fun viewSetting() {

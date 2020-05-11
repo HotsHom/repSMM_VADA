@@ -10,8 +10,6 @@ import com.example.kafgoodline.presentation.loginScreen.loading.LoadFragment
 import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
 import com.example.kafgoodline.presentation.mainScreen.WorkActivity
-import com.vk.api.sdk.ui.VKWebViewAuthActivity
-import com.vk.api.sdk.utils.VKUtils
 
 
 class MainActivity : ICredentionalsRouter, ABaseActivity() {
@@ -33,9 +31,6 @@ class MainActivity : ICredentionalsRouter, ABaseActivity() {
 
         if (savedInstanceState != null)
             return
-        val fingerprints: Array<String?>? =
-            VKUtils.getCertificateFingerprint(this, this.packageName)
-
         showLoading()
     }
 
@@ -55,4 +50,6 @@ class MainActivity : ICredentionalsRouter, ABaseActivity() {
         val intent = Intent(this, WorkActivity::class.java)
         startActivity(intent)
     }
+
+
 }

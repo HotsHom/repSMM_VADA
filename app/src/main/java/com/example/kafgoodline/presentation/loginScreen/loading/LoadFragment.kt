@@ -30,4 +30,11 @@ class LoadFragment : ABaseFragment(), ILoadView {
                 it.showLogin(this.view)
         }
     }
+
+    override fun onLoadingCompleteLogining() {
+        activity.let {
+            if (it is ICredentionalsRouter)
+                it.goToMainWorkScreen()
+        }
+    }
 }

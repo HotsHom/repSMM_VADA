@@ -31,8 +31,6 @@ class LoginPresenter : MvpPresenter<ILoginView> {
                 viewState.unlock()
                 return@SubRX
             }
-
-
             viewState.showWork()
         }, login, password)
     }

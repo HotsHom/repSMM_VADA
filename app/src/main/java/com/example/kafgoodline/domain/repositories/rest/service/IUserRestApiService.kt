@@ -1,9 +1,9 @@
 package com.example.kafgoodline.domain.repositories.rest.service
 
-import io.reactivex.Observable
-import retrofit2.Call
 import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
+import io.reactivex.Observable
+import retrofit2.Call
 import retrofit2.http.*
 
 interface IUserRestApiService {
@@ -32,7 +32,6 @@ interface IUserRestApiService {
     ): Observable<User>
 
 
-
     /**
      * Будет использовать для обновления текущего токена пользователя
      */
@@ -44,6 +43,12 @@ interface IUserRestApiService {
 
     @POST("/list_user/token/")
     fun putVkToken(
-        @Body token: UserAPI
-    ): Call<UserAPI>
+        @Body user: UserAPI
+    ): Observable<UserAPI>
+
+    @GET("/token/{user_id}/")
+    fun getTokenVk(
+        @Path ("user_id") id: Int
+    ): Observable<UserAPI>
+
 }

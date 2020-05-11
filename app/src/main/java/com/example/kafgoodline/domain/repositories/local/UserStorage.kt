@@ -6,7 +6,6 @@ import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import com.example.kafgoodline.domain.repositories.models.toBase
 import com.example.kafgoodline.domain.repositories.models.toRealm
 import io.realm.Realm
-import io.realm.RealmConfiguration
 import javax.inject.Inject
 
 class UserStorage {
@@ -21,11 +20,11 @@ class UserStorage {
     fun save(_user: User, login: String, pass: String) {
         _user.username = login
         this.user = _user
-        if (_user.firstname != ""){
+        if (_user.firstname != "") {
             val user = this.user ?: return
-                user.firstname = _user.firstname
-                user.secondname = _user.secondname
-                user.isNewUser = false
+            user.firstname = _user.firstname
+            user.secondname = _user.secondname
+            user.isNewUser = false
         }
 
         Realm.getDefaultInstance().use {
@@ -35,22 +34,22 @@ class UserStorage {
         }
     }
 
-    fun save(_user: User, flag: String? = null){
-        if (flag.isNullOrEmpty()){
+    fun save(_user: User, flag: String? = null) {
+        if (flag.isNullOrEmpty()) {
             val user = getUser() ?: return
-                user.access = _user.access
-                user.refresh = _user.access
+            user.access = _user.access
+            user.refresh = _user.access
             Realm.getDefaultInstance().use {
                 it.executeTransaction {
                     it.insertOrUpdate(user.toRealm())
                 }
             }
         }
-        if(flag == "Finish"){
-            val  user = getUser() ?: return
-                user.firstname = _user.firstname
-                user.secondname = _user.secondname
-                user.isNewUser = false
+        if (flag == "Finish") {
+            val user = getUser() ?: return
+            user.firstname = _user.firstname
+            user.secondname = _user.secondname
+            user.isNewUser = false
             Realm.getDefaultInstance().use {
                 it.executeTransaction {
                     it.insertOrUpdate(user.toRealm())
@@ -63,27 +62,21 @@ class UserStorage {
         user = null
         Realm.getDefaultInstance().use {
             it.executeTransaction {
-                it.where(UserRealm :: class.java).findAll().deleteAllFromRealm()
+                it.where(UserRealm::class.java).findAll().deleteAllFromRealm()
             }
         }
     }
 
-    fun getUser() : User? {
-
-        user?.let {
-            return  it
-        }
-
+    fun getUser(): User? {
         Realm.getDefaultInstance().use {
             return it.where(UserRealm::class.java).findFirst()?.toBase().apply {
-                    user = this
+                user = this
             }
         }
     }
 
 
-
-    fun Delete(){
+    fun Delete() {
         Realm.deleteRealm(Realm.getDefaultConfiguration())
     }
 
@@ -91,10 +84,29 @@ class UserStorage {
         val user = getUser() ?: return
         user.vkToken = token
 
-        Realm.getDefaultInstance().use {
+        Realm.getDefaultInstance().use { it ->
             it.executeTransaction {
                 it.insertOrUpdate(user.toRealm())
             }
+        }
+    }
+
+    fun saveIdVkGroup(id: String) {
+        val user = getUser() ?: return
+        user.vkIdGroup = id
+
+        Realm.getDefaultInstance().use { it ->
+            it.executeTransaction {
+                it.insertOrUpdate(user.toRealm())
+            }
+        }
+    }
+
+    fun logout() {
+        Realm.getDefaultInstance().use {
+            it -> it.executeTransaction{
+            it.deleteAll()
+        }
         }
     }
 }

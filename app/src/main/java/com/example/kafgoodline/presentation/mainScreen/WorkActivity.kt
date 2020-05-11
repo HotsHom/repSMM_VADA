@@ -1,31 +1,34 @@
 package com.example.kafgoodline.presentation.mainScreen
 
-import android.app.Activity
-import android.app.Application
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import androidx.annotation.NonNull
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.kafgoodline.R
+import androidx.fragment.app.FragmentManager
 import com.example.kafgoodline.App
+import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseActivity
+import com.example.kafgoodline.base.SubRX
 import com.example.kafgoodline.domain.di.component.DaggerAppComponent
 import com.example.kafgoodline.domain.repositories.AuthRepository
+import com.example.kafgoodline.domain.repositories.UseTokenRepository
+import com.example.kafgoodline.presentation.loginScreen.MainActivity
 import com.example.kafgoodline.presentation.mainScreen.createPost.PostFragment
 import com.example.kafgoodline.presentation.mainScreen.homePage.HomeFragment
 import com.example.kafgoodline.presentation.mainScreen.profile.ProfileFragment
 import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.vk.sdk.VKAccessToken
+import com.vk.sdk.VKCallback
+import com.vk.sdk.VKSdk
+import com.vk.sdk.api.VKApi
+import com.vk.sdk.api.VKError
 import kotlinx.android.synthetic.main.activity_work.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
-
 
 
     companion object {
@@ -41,6 +44,8 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
 
     @Inject
     lateinit var userRepository: AuthRepository
+    @Inject
+    lateinit var TokenRepository: UseTokenRepository
 
     init {
         inject()
@@ -50,14 +55,12 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
         DaggerAppComponent.create().inject(this)
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work)
         val bt: BottomNavigationView = findViewById(R.id.bar)
 
-        if(userRepository.getUserStatus() != null && userRepository.getUserStatus() == true){
+        if (userRepository.getUserStatus() != null && userRepository.getUserStatus() == true) {
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.container,
@@ -65,30 +68,29 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
                 )
                 .commit()
             bar.visibility = View.GONE
-        }else{
+        } else {
             showHome()
             bt.selectedItemId = R.id.home
-
-            bt.setOnNavigationItemSelectedListener{ item ->
-                when (item.itemId) {
-                    R.id.statictics -> {
-                        add(HomeFragment()) //TODO!
-                    }
-                    R.id.contentPlan -> {
-                        add(HomeFragment()) //TODO!
-                    }
-                    R.id.home -> {
-                        add(HomeFragment())
-                    }
-                    R.id.training -> {
-                        add(HomeFragment()) //TODO!
-                    }
-                    R.id.progile -> {
-                        add(ProfileFragment())
-                    }
+        }
+        bt.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.statictics -> {
+                    add(HomeFragment()) //TODO!
                 }
-                return@setOnNavigationItemSelectedListener true
+                R.id.contentPlan -> {
+                    add(HomeFragment()) //TODO!
+                }
+                R.id.home -> {
+                    add(HomeFragment())
+                }
+                R.id.training -> {
+                    add(HomeFragment()) //TODO!
+                }
+                R.id.progile -> {
+                    add(ProfileFragment())
+                }
             }
+            return@setOnNavigationItemSelectedListener true
         }
     }
 
@@ -97,6 +99,14 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
     }
 
     override fun showHome() {
+        TokenRepository.getUser()?.let {
+            TokenRepository.getTokenVk(SubRX { _, e ->
+                if (e != null) {
+                    e.printStackTrace()
+                    return@SubRX}
+            }, it)
+        }
+
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.container,
@@ -120,5 +130,46 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
             )
             .addToBackStack(null)
             .commit()
+    }
+
+    override fun goToLoginScreen() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    @Override
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        if (!VKSdk.onActivityResult(
+                requestCode,
+                resultCode,
+                data,
+                object : VKCallback<VKAccessToken> {
+                    @SuppressLint("ResourceType")
+                    override fun onResult(res: VKAccessToken) {
+                        TokenRepository.putVkTokenFinction(SubRX { _, e ->
+                            if (e != null) {
+                                e.printStackTrace()
+                                Toast.makeText(this@WorkActivity, res.accessToken, Toast.LENGTH_SHORT).show()
+                                replace(ProfileFragment())
+                                return@SubRX
+                            }else{
+                                Toast.makeText(this@WorkActivity, res.accessToken, Toast.LENGTH_SHORT).show()
+                                replace(ProfileFragment())
+                                Toast.makeText(this@WorkActivity, e, Toast.LENGTH_SHORT).show()
+                            }
+                        }, res.accessToken)
+                    }
+
+                    override fun onError(error: VKError?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                })
+        ) {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 }

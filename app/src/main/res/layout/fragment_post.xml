@@ -99,6 +99,7 @@
                     android:layout_marginTop="20dp">
 
                     <EditText
+                        android:id="@+id/etTitlePost"
                         style="@style/Base.Widget.MaterialComponents.AutoCompleteTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -120,6 +121,7 @@
                     android:layout_marginTop="20dp">
 
                     <EditText
+                        android:id="@+id/etTextPost"
                         style="@style/Base.Widget.MaterialComponents.AutoCompleteTextView"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
@@ -212,6 +214,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btnDoPost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"

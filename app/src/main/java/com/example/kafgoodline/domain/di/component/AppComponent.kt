@@ -7,6 +7,7 @@ import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
 import com.example.kafgoodline.presentation.mainScreen.profile.ProfileFragment
 import com.example.kafgoodline.presentation.mainScreen.WorkActivity
+import com.example.kafgoodline.presentation.mainScreen.createPost.PostFragment
 import com.example.kafgoodline.presentation.mainScreen.homePage.HomeFragment
 import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
 import dagger.Component
@@ -27,4 +28,5 @@ interface AppComponent {
     fun inject(target: WorkActivity)
     fun inject(target: ProfileFragment)
     fun inject(target: HomeFragment)
+    fun inject(target: PostFragment)
 }
