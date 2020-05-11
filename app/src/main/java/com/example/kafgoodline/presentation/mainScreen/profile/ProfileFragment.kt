@@ -105,6 +105,8 @@ class ProfileFragment : ABaseFragment(), IProfileView {
         first_name.text = presenter.userRepositoryWithToken.getUser()?.firstname
         last_name.text = presenter.userRepositoryWithToken.getUser()?.secondname
         username_profile.text = presenter.userRepositoryWithToken.getUser()?.username
+        infoNickname.text = presenter.userRepositoryWithToken.getUser()?.username
+        infoFSName.text = "${presenter.userRepositoryWithToken.getUser()?.secondname} ${presenter.userRepositoryWithToken.getUser()?.firstname}"
         if (!presenter.userRepositoryWithToken.getUser()?.vkToken.isNullOrEmpty()) {
             vk_button.isEnabled = false
             vk_button.setBackgroundResource(R.drawable.butt_style_black_low_radius)

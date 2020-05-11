@@ -172,4 +172,8 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+    fun toast(mes : String){
+        Toast.makeText(this@WorkActivity, mes, Toast.LENGTH_SHORT).show()
+    }
 }
