@@ -3,10 +3,11 @@ package com.example.kafgoodline.presentation.mainScreen
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.kafgoodline.App
 import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseActivity
@@ -23,10 +24,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vk.sdk.VKAccessToken
 import com.vk.sdk.VKCallback
 import com.vk.sdk.VKSdk
-import com.vk.sdk.api.VKApi
-import com.vk.sdk.api.VKError
+import com.vk.sdk.api.*
 import kotlinx.android.synthetic.main.activity_work.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.time.LocalDate
 import javax.inject.Inject
+import kotlin.concurrent.thread
+
 
 class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
 
@@ -54,6 +60,8 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
     fun inject() {
         DaggerAppComponent.create().inject(this)
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,6 +102,8 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
         }
     }
 
+
+
     override fun showMenu() {
         bar.visibility = View.VISIBLE
     }
@@ -130,6 +140,7 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
             )
             .addToBackStack(null)
             .commit()
+
     }
 
     override fun goToLoginScreen() {
