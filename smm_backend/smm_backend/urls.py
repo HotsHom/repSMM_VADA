@@ -22,7 +22,7 @@ from rest_framework import serializers, viewsets, routers
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 from .views import TokenViewSet
-from smm_backend.views import PostViewSet, PurchaseList
+from smm_backend.views import PostViewSet, PurchaseList, UserPostViewSet
 
 
 schema_view = get_swagger_view(title="Documentation")
@@ -45,6 +45,7 @@ router = routers.DefaultRouter()
 router.register('users', UserViewSet)
 router.register('token', TokenViewSet)
 router.register('post', PostViewSet)
+router.register('user-post', UserPostViewSet)
 
 
 # Wire up our API using automatic URL routing.

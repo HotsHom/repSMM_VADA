@@ -14,3 +14,11 @@ class Post(models.Model):
     title = models.CharField(max_length = 200)
     text = models.TextField()
     likes = models.IntegerField()
+
+class UserPost(models.Model):
+    user_id = models.IntegerField()
+    title = models.CharField(max_length = 50)
+    text = models.TextField()
+    vk = models.BooleanField()
+    date_post = models.DateTimeField()
+    group_id = models.CharField(max_length = 50)

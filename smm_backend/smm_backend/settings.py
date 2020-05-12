@@ -13,6 +13,7 @@ from datetime import timedelta
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,6 +29,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['89cc7472.ngrok.io']
 
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Krasnoyarsk'
+timezone = 'Asia/Krasnoyarsk'
 
 # Application definition
 
@@ -208,3 +216,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+os.environ.setdefault('FORKED_BY_MULTIPROCESSING', '1')

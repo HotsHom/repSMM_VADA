@@ -1,5 +1,6 @@
 package com.example.kafgoodline.domain.repositories.rest.service
 
+import com.example.kafgoodline.domain.repositories.models.rest.Post
 import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import io.reactivex.Observable
@@ -51,4 +52,8 @@ interface IUserRestApiService {
         @Path ("user_id") id: Int
     ): Observable<UserAPI>
 
+    @POST("/list_user/user-post/")
+    fun putPostDelay(
+        @Body post: Post
+    ): Observable<Post>
 }

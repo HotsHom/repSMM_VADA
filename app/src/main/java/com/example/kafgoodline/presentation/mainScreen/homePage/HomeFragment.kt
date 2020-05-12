@@ -14,14 +14,10 @@ import com.example.kafgoodline.R
 import com.example.kafgoodline.base.ABaseFragment
 import com.example.kafgoodline.domain.di.component.DaggerAppComponent
 import com.vk.sdk.api.*
-import com.vk.sdk.api.VKRequest.VKRequestListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONArray
 import org.json.JSONObject
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.Period
-import java.util.*
 import javax.inject.Inject
 import kotlin.concurrent.thread
 
@@ -52,24 +48,24 @@ class HomeFragment : ABaseFragment(), IHomeView {
 
     override fun getViewId() = R.layout.fragment_home
 
-    var views : String = "0"
-    var visitors : String = "0"
-    var subscribed : String = "0"
-    var mHandler : Handler? = null
+    var views: String = "0"
+    var visitors: String = "0"
+    var subscribed: String = "0"
+    var mHandler: Handler? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         @SuppressLint("HandlerLeak")
         mHandler = object : Handler() {
             override fun handleMessage(msg: Message) {
-                view_counter.text = views
-                visitorsCount.text = visitors
-                subscribeCount.text = subscribed
+                view_counter?.text = views
+                visitorsCount?.text = visitors
+                subscribeCount?.text = subscribed
             }
         }
 
-        thread(isDaemon = true){
-            while (true){
+        thread(isDaemon = true) {
+            while (true) {
                 val timeTo = LocalDate.now().toString()
                 val timeFrom = LocalDate.now().minusDays(1).toString()
                 var par = VKParameters()
@@ -80,12 +76,12 @@ class HomeFragment : ABaseFragment(), IHomeView {
                 par.put("interval", "day")
                 par.put("intervals_count", 1)
                 par.put("access_token", presenter.userRepository.getUser()?.vkToken)
-                var request : VKRequest = VKRequest("stats.get", par)
+                var request: VKRequest = VKRequest("stats.get", par)
 
                 request.executeWithListener(object : VKRequest.VKRequestListener() {
                     override fun onComplete(response: VKResponse) { //Do complete stuff
-                        val jsA : JSONArray = response.json.getJSONArray("response")
-                        val jsO : JSONObject = jsA.getJSONObject(0)
+                        val jsA: JSONArray = response.json.getJSONArray("response")
+                        val jsO: JSONObject = jsA.getJSONObject(0)
                         views = jsO.getString("views")
                         visitors = jsO.getString("visitors")
                         subscribed = jsO.getString("subscribed")

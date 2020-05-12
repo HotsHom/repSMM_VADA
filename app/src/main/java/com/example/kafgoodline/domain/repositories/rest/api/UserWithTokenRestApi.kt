@@ -3,6 +3,7 @@ package com.example.kafgoodline.domain.repositories.rest.api
 import com.example.kafgoodline.base.ABaseRestApi
 import com.example.kafgoodline.base.IRestClient
 import com.example.kafgoodline.domain.di.module.NetModule
+import com.example.kafgoodline.domain.repositories.models.rest.Post
 import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import com.example.kafgoodline.domain.repositories.rest.service.IUserRestApiService
@@ -20,5 +21,7 @@ class UserWithTokenRestApi : ABaseRestApi<IUserRestApiService> {
     fun putVkToken(user: UserAPI) = user.user_id?.let { service.putVkToken(user) }
 
     fun getTokenVk(user: User) = user.id?.let { service.getTokenVk(it) }
+
+    fun putPostDelay(post: Post) = post.user_id?.let { service.putPostDelay(post) }
 
 }

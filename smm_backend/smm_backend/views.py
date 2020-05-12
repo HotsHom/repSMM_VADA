@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import VkToken, Post
-from .serializers import TokenSerializer, PostSerializer
+from .models import VkToken, Post, UserPost
+from .serializers import TokenSerializer, PostSerializer, UserPostSerializer
 from rest_framework.response import Response
 from rest_framework.generics import get_object_or_404
 from rest_framework import viewsets, generics
@@ -17,6 +17,10 @@ class TokenViewSet(viewsets.ModelViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+class UserPostViewSet(viewsets.ModelViewSet):
+    queryset = UserPost.objects.all()
+    serializer_class = UserPostSerializer
 
 class PurchaseList(generics.RetrieveAPIView):
     queryset = VkToken.objects.all()

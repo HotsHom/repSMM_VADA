@@ -3,6 +3,7 @@ package com.example.kafgoodline.domain.repositories
 import com.example.kafgoodline.base.SubRX
 import com.example.kafgoodline.base.standardSubscribeIO
 import com.example.kafgoodline.domain.repositories.local.UserStorage
+import com.example.kafgoodline.domain.repositories.models.rest.Post
 import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import com.example.kafgoodline.domain.repositories.rest.api.UserWithTokenRestApi
@@ -76,5 +77,20 @@ class UseTokenRepository {
 
     fun logout() {
         storage.logout()
+    }
+
+    fun putPostDelay(observer: SubRX<Post>, text: String, title: String, date: String) {
+
+        val _post = Post()
+        _post.user_id = getUser()?.id.toString()
+        _post.title = title
+        _post.text = text
+        _post.vk = true
+        _post.date_post = date
+        _post.group_id = getUser()?.vkIdGroup
+
+        restWithToken.putPostDelay(_post)?.doOnNext {
+
+        }?.doOnError { }?.standardSubscribeIO(observer)
     }
 }
