@@ -23,5 +23,6 @@ class UserWithTokenRestApi : ABaseRestApi<IUserRestApiService> {
     fun getTokenVk(user: User) = user.id?.let { service.getTokenVk(it) }
 
     fun putPostDelay(post: Post) = post.user_id?.let { service.putPostDelay(post) }
+    fun getUserPosts(id: Int) =  service.getUserPosts(id)
 
 }

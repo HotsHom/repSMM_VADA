@@ -20,7 +20,9 @@ import com.vk.sdk.api.VKRequest.VKRequestListener
 import com.vk.sdk.api.model.VKWallPostResult
 import kotlinx.android.synthetic.main.fragment_post.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import javax.inject.Inject
 
@@ -108,7 +110,28 @@ class PostFragment : ABaseFragment(), IPostView {
     }
 
     private fun makePost() {
-        if (llTimeChoose.visibility == View.GONE) {
+        var datetimeNow = LocalDateTime.now()
+        var month = dtData.month.toString()
+        var day = dtData.dayOfMonth.toString()
+        var hour = tpTime.hour.toString()
+        var minute = tpTime.minute.toString()
+        if (dtData.month + 1 < 10){
+            month = "0${dtData.month + 1}"
+        }
+        if (dtData.dayOfMonth < 10){
+            day = "0${dtData.dayOfMonth}"
+        }
+        if (tpTime.hour < 10){
+            hour = "0${tpTime.hour}"
+        }
+        if (tpTime.minute < 10){
+            minute = "0${tpTime.minute}"
+        }
+        var datetimePicker = dtData.year.toString() + "-" + month + "-" + day + "T" + hour + ":" + minute + ":59"
+        var dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+        var dt = LocalDateTime.parse(datetimePicker, dtf)
+        var dtNow = LocalDateTime.parse(datetimeNow.toString().substring(0..18), dtf)
+        if (dtNow >= dt || llTimeChoose.visibility == View.GONE) {
             val parameters = VKParameters()
             parameters.put(VKApiConst.OWNER_ID, "-${presenter.userRepository.getUser()?.vkIdGroup}")
             parameters.put(VKApiConst.MESSAGE, etTextPost.text.toString())
@@ -120,7 +143,7 @@ class PostFragment : ABaseFragment(), IPostView {
                     Toast.makeText(activity, "Опубликованно", Toast.LENGTH_SHORT).show()
                     activity.let {
                         if (it is ICredentionalsRouterWorkActivity)
-                            it.showHome()
+                            it.showContentPlan()
                     }
                 }
 
@@ -132,7 +155,7 @@ class PostFragment : ABaseFragment(), IPostView {
             var month = dtData.month.toString()
             var day = dtData.dayOfMonth.toString()
             var hour = tpTime.hour.toString()
-            var minute = tpTime.minute.plus(1).toString()
+            var minute = tpTime.minute.toString()
             if (dtData.month + 1 < 10){
                 month = "0${dtData.month + 1}"
             }
@@ -142,8 +165,8 @@ class PostFragment : ABaseFragment(), IPostView {
             if (tpTime.hour < 10){
                 hour = "0${tpTime.hour}"
             }
-            if (tpTime.minute.plus(1) < 10){
-                minute = "0${tpTime.minute.plus(1)}"
+            if (tpTime.minute < 10){
+                minute = "0${tpTime.minute}"
             }
             datetime = dtData.year.toString() + "-" + month + "-" + day + "T" + hour + ":" + minute + ":59"
             presenter.userTokenRepository.putPostDelay(SubRX { _, e ->
@@ -153,7 +176,7 @@ class PostFragment : ABaseFragment(), IPostView {
                 Toast.makeText(activity, "Запланировано", Toast.LENGTH_SHORT).show()
                 activity.let {
                     if (it is ICredentionalsRouterWorkActivity)
-                        it.showHome()
+                        it.showContentPlan()
                 }
             }, etTextPost.text.toString(),etTitlePost.text.toString(),datetime)
         }

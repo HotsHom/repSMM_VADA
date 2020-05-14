@@ -7,9 +7,11 @@ import com.example.kafgoodline.presentation.loginScreen.login.LoginFragment
 import com.example.kafgoodline.presentation.loginScreen.registration.RegisterFragment
 import com.example.kafgoodline.presentation.mainScreen.profile.ProfileFragment
 import com.example.kafgoodline.presentation.mainScreen.WorkActivity
+import com.example.kafgoodline.presentation.mainScreen.contentPlan.ContentPlanFragment
 import com.example.kafgoodline.presentation.mainScreen.createPost.PostFragment
 import com.example.kafgoodline.presentation.mainScreen.homePage.HomeFragment
 import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
+import com.example.kafgoodline.presentation.mainScreen.statistics.StatisticsFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -29,4 +31,6 @@ interface AppComponent {
     fun inject(target: ProfileFragment)
     fun inject(target: HomeFragment)
     fun inject(target: PostFragment)
+    fun inject(target: ContentPlanFragment)
+    fun inject(target: StatisticsFragment)
 }

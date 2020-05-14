@@ -12,9 +12,100 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:orientation="vertical"
+                android:background="#15181B">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Список запланированных постов"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="true"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:gravity="top"
+                    android:paddingTop="20dp"
+                    android:paddingHorizontal="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:text="Ниже представлены ваши запланированные посты"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:gravity="top"
+                    android:paddingHorizontal="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="60dp">
+
+                <Button
+                    android:id="@+id/btnWritePost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/butt_style_color_low_radius"
+                    android:layout_marginHorizontal="20dp"
+                    android:text="Написать пост"
+                    android:layout_marginTop="50dp"
+                    android:onClick="showCreatePost"/>
+
+                <LinearLayout
+                    android:id="@+id/llPostsConteiner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/radius_block_white"
+                    android:layout_marginHorizontal="20dp"
+                    android:visibility="visible"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="20dp"
+                    android:layout_marginBottom="50dp">
 
 
+                    <TextView
+                        android:id="@+id/tvInformText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Нет запланированных постов"
+                        android:layout_gravity="center"/>
+
+                    <Button
+                        android:id="@+id/btnRefresh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Обновить"
+                        android:layout_marginTop="5dp"
+                        android:textSize="15sp"/>
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:stretchColumns="*"
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/tlTable">
+
+                        <TableRow
+                            android:gravity="center">
+                            <TextView
+                                android:text="Посты"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:background="#BCBCBC"/>
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </FrameLayout>

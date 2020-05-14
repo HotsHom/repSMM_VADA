@@ -1,6 +1,7 @@
 package com.example.kafgoodline.domain.repositories.local
 
 import com.example.kafgoodline.domain.repositories.models.realm.UserRealm
+import com.example.kafgoodline.domain.repositories.models.rest.Post
 import com.example.kafgoodline.domain.repositories.models.rest.User
 import com.example.kafgoodline.domain.repositories.models.rest.UserAPI
 import com.example.kafgoodline.domain.repositories.models.toBase
@@ -12,6 +13,7 @@ class UserStorage {
 
     private var user: User? = null
     private var userApi: UserAPI? = null
+    var userPosts: List<Post>? = null
 
 
     @Inject
@@ -108,5 +110,9 @@ class UserStorage {
             it.deleteAll()
         }
         }
+    }
+
+    fun savePosts(it: List<Post>?) {
+        userPosts = it
     }
 }

@@ -57,17 +57,18 @@
                     android:background="@drawable/radius_block_white"
                     android:layout_marginHorizontal="20dp"
 
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Выберете соц. сеть(и) отображения статистики"
+                        android:text="Выберете соц. сеть(и) для постинга"
                         android:textColor="#1B1B1B"
                         android:gravity="center"
                         android:layout_marginTop="10dp"/>
 
                     <LinearLayout
+                        android:id="@+id/llChooseSocial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -76,11 +77,13 @@
                         android:layout_marginBottom="10dp">
 
                         <ImageButton
+                            android:id="@+id/btnVk"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:background="@drawable/vk_logo_color"/>
 
                         <ImageButton
+                            android:id="@+id/btnTwitter"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:background="@drawable/twitter_logo"
@@ -90,6 +93,64 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="80dp"
+                android:layout_marginHorizontal="20dp"
+                android:visibility="visible"
+                android:layout_marginBottom="60dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/radius_block_white">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Статистика просмотров"
+                        android:gravity="center"
+                        android:layout_marginVertical="20dp"
+                        android:textStyle="bold"/>
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chartViews"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginBottom="20dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/radius_block_white">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Статистика посещений"
+                        android:gravity="center"
+                        android:layout_marginVertical="20dp"
+                        android:textStyle="bold"/>
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chartVisitors"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginBottom="20dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
     </ScrollView>

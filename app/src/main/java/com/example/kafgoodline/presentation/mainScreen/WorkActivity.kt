@@ -16,10 +16,12 @@ import com.example.kafgoodline.domain.di.component.DaggerAppComponent
 import com.example.kafgoodline.domain.repositories.AuthRepository
 import com.example.kafgoodline.domain.repositories.UseTokenRepository
 import com.example.kafgoodline.presentation.loginScreen.MainActivity
+import com.example.kafgoodline.presentation.mainScreen.contentPlan.ContentPlanFragment
 import com.example.kafgoodline.presentation.mainScreen.createPost.PostFragment
 import com.example.kafgoodline.presentation.mainScreen.homePage.HomeFragment
 import com.example.kafgoodline.presentation.mainScreen.profile.ProfileFragment
 import com.example.kafgoodline.presentation.mainScreen.startApp.StartFragment
+import com.example.kafgoodline.presentation.mainScreen.statistics.StatisticsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vk.sdk.VKAccessToken
 import com.vk.sdk.VKCallback
@@ -83,10 +85,10 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
         bt.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.statictics -> {
-                    add(HomeFragment()) //TODO!
+                    add(StatisticsFragment())
                 }
                 R.id.contentPlan -> {
-                    add(HomeFragment()) //TODO!
+                    add(ContentPlanFragment())
                 }
                 R.id.home -> {
                     add(HomeFragment())
@@ -130,6 +132,12 @@ class WorkActivity : ABaseActivity(), ICredentionalsRouterWorkActivity {
         val bt: BottomNavigationView = findViewById(R.id.bar)
         bt.selectedItemId = R.id.contentPlan
         add(PostFragment())
+    }
+
+    override fun showContentPlan() {
+        val bt: BottomNavigationView = findViewById(R.id.bar)
+        bt.selectedItemId = R.id.contentPlan
+        add(ContentPlanFragment())
     }
 
     override fun add(fragment: Fragment) {

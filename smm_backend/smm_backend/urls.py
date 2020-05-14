@@ -22,7 +22,7 @@ from rest_framework import serializers, viewsets, routers
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 from .views import TokenViewSet
-from smm_backend.views import PostViewSet, PurchaseList, UserPostViewSet
+from smm_backend.views import PostViewSet, PostsList, PurchaseList, UserPostViewSet
 
 
 schema_view = get_swagger_view(title="Documentation")
@@ -52,6 +52,8 @@ router.register('user-post', UserPostViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('api_doc/', schema_view),
+    #url(r'^posts/', PostsList.as_view()),
+    url(r'^posts/(?P<user_id>.+)/$', PostsList.as_view()),
     url(r'^token/(?P<user_id>[0-9]+)/$', PurchaseList.as_view()),
     path('list_user/', include(router.urls)),
     url(r'^accounts/', include('allauth.urls')),

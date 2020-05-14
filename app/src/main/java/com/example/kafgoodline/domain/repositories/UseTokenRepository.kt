@@ -93,4 +93,16 @@ class UseTokenRepository {
 
         }?.doOnError { }?.standardSubscribeIO(observer)
     }
+
+    fun getUserPosts(observer: SubRX<List<Post>>) {
+        storage.getUser()?.id?.let {
+            restWithToken.getUserPosts(it)?.doOnNext {
+                storage.savePosts(it)
+            }?.doOnError { }?.standardSubscribeIO(observer)
+        }
+    }
+
+    fun getPosts(): List<Post>? {
+        return storage.userPosts
+    }
 }

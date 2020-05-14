@@ -10,5 +10,6 @@ interface ICredentionalsRouterWorkActivity {
     fun showCreatePost(view: View)
     fun add(fragment: Fragment)
     fun goToLoginScreen()
+    fun showContentPlan()
 
 }

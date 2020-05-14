@@ -111,6 +111,7 @@ class ProfileFragment : ABaseFragment(), IProfileView {
             vk_button.isEnabled = false
             vk_button.setBackgroundResource(R.drawable.butt_style_black_low_radius)
             vk_button.isClickable = false
+            vk_button.text = "Отключить"
             linked.text = "1 соц. сеть подключена"
         }
         if (!presenter.userRepositoryWithToken.getUser()?.vkIdGroup.isNullOrEmpty()) {

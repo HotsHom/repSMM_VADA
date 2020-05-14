@@ -8,6 +8,6 @@ data class Post(
     var title: String? = null,
     var text: String? = null,
     var vk: Boolean? = null,
-    var date_post: String? = null,
+    var date_post: String = "",
     var group_id: String? = null
 )

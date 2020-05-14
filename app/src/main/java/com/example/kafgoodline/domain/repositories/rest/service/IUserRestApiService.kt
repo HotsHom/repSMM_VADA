@@ -56,4 +56,10 @@ interface IUserRestApiService {
     fun putPostDelay(
         @Body post: Post
     ): Observable<Post>
+
+
+    @GET("/posts/{user_id}/")
+    fun getUserPosts(
+        @Path ("user_id") id: Int
+    ): Observable<List<Post>>
 }
