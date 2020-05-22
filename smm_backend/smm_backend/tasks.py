@@ -7,6 +7,8 @@ import requests
 from django.contrib.auth.models import User
 import datetime
 from django.shortcuts import get_list_or_404
+from _datetime import date
+import time
 
 
 # @shared_task(name = "print_msg_with_name")
@@ -16,12 +18,11 @@ from django.shortcuts import get_list_or_404
 @shared_task(name = "post")
 def add():
     queryset = UserPost.objects.all()
-    data = datetime.datetime.now()
     obj = get_list_or_404(queryset)
     print("!!!!!!!!!FFFFFFFFFFFFFFF!!!!!!!!")
     print(obj)
     for post in obj:
-        if (post.date_post.strftime("%Y-%M-%D %H:%M:%S") == data.strftime("%Y-%M-%D %H:%M:%S")):
+        if (post.date_post.strftime("%Y-%M-%D %H:%M:%S") == time.strftime("%Y-%M-%D %H:%M:%S")):
             qq = VkToken.objects.all()
             obj = get_object_or_404(qq, user_id=post.user_id)
             t = obj.token

@@ -82,20 +82,20 @@ class HomeFragment : ABaseFragment(), IHomeView {
                     override fun onComplete(response: VKResponse) { //Do complete stuff
                         val jsA: JSONArray = response.json.getJSONArray("response")
                         val jsO: JSONObject = jsA.getJSONObject(0)
-                        if (jsO.getString("views") != "null"){
-                            views = jsO.getString("views")
+                        views = if (jsO.getString("views") != "null"){
+                            jsO.getString("views")
                         }else{
-                            views = "0"
+                            "0"
                         }
-                        if (jsO.getString("visitors") != "null"){
-                            visitors = jsO.getString("visitors")
+                        visitors = if (jsO.getString("visitors") != "null"){
+                            jsO.getString("visitors")
                         }else{
-                            visitors = "0"
+                            "0"
                         }
-                        if (jsO.getString("subscribed") != "null"){
-                            subscribed = jsO.getString("subscribed")
+                        subscribed = if (jsO.getString("subscribed") != "null"){
+                            jsO.getString("subscribed")
                         }else{
-                            subscribed = "0"
+                            "0"
                         }
                         (mHandler as Handler).sendEmptyMessage(1)
                     }

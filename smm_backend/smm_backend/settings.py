@@ -27,7 +27,7 @@ SECRET_KEY = '8eth9u)^h+04ecq3h6gc3opiu3a0=m0#489hl+2zdx8s%l3ack'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['7aafc371.ngrok.io']
+ALLOWED_HOSTS = ['516c5133.ngrok.io']
 
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
